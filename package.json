@@ -1,0 +1,29 @@
+{
+  "name": "jenny.wang",
+  "version": "1.0.0",
+  "description": "Portfolio for Jenny Wang built with Express, React, and React-Router",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rikilele/jenny.wang.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Rikilele/jenny.wang/issues"
+  },
+  "homepage": "https://github.com/Rikilele/jenny.wang#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "is-image": "^3.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1"
+  }
+}
