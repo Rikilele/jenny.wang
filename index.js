@@ -1,28 +1,38 @@
 const path = require('path');
 const fs = require('fs');
+const http = require('http');
 const express = require('express');
 const isImage = require('is-image');
 
-const APP = express();
-const PORT = process.env.PORT || 5000;
+const app = express();
+const port = process.env.port || 5000;
+
+/**
+ * Ping the website every 20 mins to avoid idle state
+ * This is for heroku:
+ *   https://devcenter.heroku.com/articles/free-dyno-hours
+ */
+setInterval(function() {
+  http.get('http://jenny-wang.herokuapp.com');
+}, 20 * 60 * 1000);
 
 /**
  * Middleware
  */
-APP.use(express.static(path.join(__dirname, 'client/build')));
-APP.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'client/build')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 /**
  * API endpoint to return list of projects
  */
-APP.get('/api/getProjectList', function(req, res) {
+app.get('/api/getProjectList', function(req, res) {
   res.sendFile(`${__dirname}/public/projects/settings.json`);
 });
 
 /**
  * API endpoint to return list of sources to model images
  */
-APP.get('/api/getModelImages', function(req, res) {
+app.get('/api/getModelImages', function(req, res) {
   fs.readdir(`${__dirname}/public/modeling`, function(err, items) {
     const result = items.filter(item => isImage(item));
     res.json(result);
@@ -32,7 +42,7 @@ APP.get('/api/getModelImages', function(req, res) {
 /**
  * API endpoint to return list of sources to photography images
  */
-APP.get('/api/getPhotographyImages', function(req, res) {
+app.get('/api/getPhotographyImages', function(req, res) {
   fs.readdir(`${__dirname}/public/photography`, function(err, items) {
     const result = items.filter(item => isImage(item));
     res.json(result);
@@ -42,13 +52,13 @@ APP.get('/api/getPhotographyImages', function(req, res) {
 /**
  * Fallback for all other accesses
  */
-APP.get('*', function(req, res) {
+app.get('*', function(req, res) {
   res.sendFile(`${__dirname}/client/build/index.html`);
 });
 
 /**
  * Listen
  */
-APP.listen(PORT, function() {
-  console.log(`Listening on port ${PORT}`)
+app.listen(port, function() {
+  console.log(`Listening on port ${port}`)
 });
