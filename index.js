@@ -5,7 +5,7 @@ const express = require('express');
 const isImage = require('is-image');
 
 const app = express();
-const port = process.env.port || 5000;
+const port = process.env.PORT || 8080;
 
 /**
  * Ping the website every 20 mins to avoid idle state
