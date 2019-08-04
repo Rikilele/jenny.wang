@@ -13,7 +13,7 @@ const port = process.env.port || 5000;
  *   https://devcenter.heroku.com/articles/free-dyno-hours
  */
 setInterval(function() {
-  http.get('http://jenny-wang.herokuapp.com');
+  http.get('https://jenny-wang.herokuapp.com');
 }, 20 * 60 * 1000);
 
 /**
