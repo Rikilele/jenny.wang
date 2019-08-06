@@ -17,6 +17,11 @@ export default function App() {
         <Route path="/photography" component={Photography} />
         <Route path="/modeling" component={Modeling} />
       </Switch>
+      <footer className="footer">
+        <nav className="footer-nav">
+          <a href='mailto:jiayiw3@andrew.cmu.edu'>Contact Jenny</a>
+        </nav>
+      </footer>
     </div>
   );
 }

@@ -1,6 +1,30 @@
+a {
+  color: #000000;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
 .app {
   text-align: center;
   margin: 0 20vw 0 20vw;
+}
+
+.footer {
+  text-align: right;
+  position: fixed;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  background: #ffffff;
+  border-top: 1px solid rgba(26, 26, 26, 0.5);
+}
+
+.footer-nav {
+  margin: 8px 8%;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .home-title {
