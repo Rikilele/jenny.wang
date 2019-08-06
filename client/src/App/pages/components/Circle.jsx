@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { isMobile } from 'react-device-detect';
 import './Circle.css';
 
 const propTypes = {
@@ -40,6 +41,26 @@ class Circle extends React.Component {
       description,
       link,
     } = this.props;
+
+    // Mobile will show title and description as default
+    if (isMobile) {
+      return (
+        <Link to={link}>
+          <div className="m-circle-container">
+            <img
+              className="m-circle"
+              src={imageSrc}
+              alt={title}
+            />
+            <div className="m-circle-layover">
+              <div className="m-circle-title">{title}</div>
+              <div className="m-circle-description">{description}</div>
+            </div>
+          </div>
+        </Link>
+      );
+    }
+
     return (
       <Link to={link}>
         <div
