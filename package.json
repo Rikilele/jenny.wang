@@ -4,6 +4,7 @@
   "description": "Portfolio for Jenny Wang built with Express, React, and React-Router",
   "main": "index.js",
   "scripts": {
+    "setup": "npm i && cd client && npm i",
     "start": "node index.js",
     "dev": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
