@@ -8,10 +8,9 @@ export default function Home() {
         Jenny Wang
       </h1>
       <p className="home-description">
-        This is a description of my lovely Jenny Wang.
+        Jenny Jiayi Wang is a rising sophomore at Carnegie Mellon University.
         <br />
-        She is a very nice person, and sometimes can be silly.
-        <br />
+        She studies Architecture, with special interests in interior design.
       </p>
       <Circle
         imageSrc="/home/archie.jpg"
