@@ -99,10 +99,10 @@ export default class Contact extends React.Component {
     return (
       <div className="app">
         {this.renderAPIResponse()}
-        <h1 className="home-title">
+        <h1 className="app-title">
           Contact Jenny
         </h1>
-        <p className="home-description">
+        <p className="app-description">
           Pittsburgh - Vancouver - Shanghai
         </p>
         <form onSubmit={this.handleSubmit}>

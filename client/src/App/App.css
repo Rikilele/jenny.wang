@@ -6,6 +6,10 @@ a:hover {
   color: #aaaaaa;
 }
 
+textarea {
+  resize: none;
+}
+
 .app {
   text-align: center;
   margin: 0 20vw 0 20vw;
@@ -26,14 +30,14 @@ a:hover {
   font-family: 'Open Sans', sans-serif;
 }
 
-.home-title {
+.app-title {
   font-family: 'La Belle Aurore', cursive;
   font-size: calc(80px + 2vmin);
   margin: 0;
   padding-top: 5%;
 }
 
-.home-description {
+.app-description {
   font-family: 'Open Sans', sans-serif;
   padding-bottom: 5%;
 }

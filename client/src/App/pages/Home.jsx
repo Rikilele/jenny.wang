@@ -4,10 +4,10 @@ import Circle from './components/Circle';
 export default function Home() {
   return (
     <div className="app">
-      <h1 className="home-title">
+      <h1 className="app-title">
         Jenny Wang
       </h1>
-      <p className="home-description">
+      <p className="app-description">
         Jenny Jiayi Wang is a rising sophomore at Carnegie Mellon University.
         <br />
         She studies Architecture, with special interests in interior design.
