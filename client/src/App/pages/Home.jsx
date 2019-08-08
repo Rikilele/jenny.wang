@@ -11,6 +11,9 @@ export default function Home() {
         Jenny Jiayi Wang is a rising sophomore at Carnegie Mellon University.
         <br />
         She studies Architecture, with special interests in interior design.
+        <br />
+        <br />
+        <a href="/contact">Contact</a>
       </p>
       <Circle
         imageSrc="/home/archie.jpg"

@@ -2,6 +2,7 @@ const path = require('path');
 const fs = require('fs');
 const http = require('http');
 const express = require('express');
+const bodyParser = require('body-parser');
 const isImage = require('is-image');
 
 const app = express();
@@ -21,6 +22,8 @@ setInterval(() => {
  */
 app.use(express.static(path.join(__dirname, 'client/build')));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 /**
  * API endpoint to return list of projects
@@ -47,6 +50,14 @@ app.get('/api/getPhotographyImages', (req, res) => {
     const result = items.filter(item => isImage(item));
     res.json(result);
   });
+});
+
+/**
+ * API endpoint to send email to Jenny
+ */
+app.post('/api/sendMail', (req, res) => {
+  console.log(req.body);
+  res.json({ success: false, errors: ['EMAIL IS WRONG BOI'] });
 });
 
 /**

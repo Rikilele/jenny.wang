@@ -6,6 +6,7 @@ import Projects from './pages/Projects';
 import Project from './pages/Project';
 import Photography from './pages/Photography';
 import Modeling from './pages/Modeling';
+import Contact from './pages/Contact';
 
 export default function App() {
   return (
@@ -16,12 +17,8 @@ export default function App() {
         <Route path="/projects/details/:id" component={Project} />
         <Route path="/photography" component={Photography} />
         <Route path="/modeling" component={Modeling} />
+        <Route path="/contact" component={Contact} />
       </Switch>
-      <footer className="footer">
-        <nav className="footer-nav">
-          <a href="mailto:jiayiw3@andrew.cmu.edu">Contact Jenny</a>
-        </nav>
-      </footer>
     </div>
   );
 }
