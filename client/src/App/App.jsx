@@ -19,7 +19,7 @@ export default function App() {
       </Switch>
       <footer className="footer">
         <nav className="footer-nav">
-          <a href='mailto:jiayiw3@andrew.cmu.edu'>Contact Jenny</a>
+          <a href="mailto:jiayiw3@andrew.cmu.edu">Contact Jenny</a>
         </nav>
       </footer>
     </div>
