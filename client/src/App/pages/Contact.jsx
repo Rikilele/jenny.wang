@@ -68,9 +68,13 @@ export default class Contact extends React.Component {
     const { apiResponse } = this.state;
     if (!apiResponse) {
       return null;
-    } else if (apiResponse.success) {
-      return <div>Success!</div>
-    } else if (apiResponse.errors) {
+    }
+
+    if (apiResponse.success) {
+      return <div>Success!</div>;
+    }
+
+    if (apiResponse.errors) {
       return (
         <div>
           {apiResponse.errors.map(error => (
@@ -81,9 +85,11 @@ export default class Contact extends React.Component {
         </div>
       );
     }
+
+    return null;
   }
 
-  render () {
+  render() {
     const {
       name,
       email,
@@ -97,7 +103,7 @@ export default class Contact extends React.Component {
           Contact Jenny
         </h1>
         <p className="home-description">
-          Please fill out the below form to contact Jenny
+          Pittsburgh - Vancouver - Shanghai
         </p>
         <form onSubmit={this.handleSubmit}>
           <input
@@ -124,17 +130,19 @@ export default class Contact extends React.Component {
             value={subject}
             onChange={this.handleChange}
           />
-          <input
+          <textarea
             required
             placeholder="Content"
             type="text"
             name="content"
             value={content}
             onChange={this.handleChange}
+            cols={60}
+            rows={10}
           />
-          <button type="Submit">Send</button>
+          <button type="submit">Send</button>
         </form>
       </div>
-    )
+    );
   }
 }
