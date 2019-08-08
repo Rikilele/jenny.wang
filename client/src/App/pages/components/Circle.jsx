@@ -9,12 +9,14 @@ const propTypes = {
   title: PropTypes.string,
   description: PropTypes.string,
   link: PropTypes.string,
+  readonly: PropTypes.boolean,
 };
 
 const defaultProps = {
   title: '',
   description: '',
   link: '',
+  readonly: false,
 };
 
 class Circle extends React.Component {
@@ -40,12 +42,13 @@ class Circle extends React.Component {
       title,
       description,
       link,
+      readonly,
     } = this.props;
 
     // Mobile will show title and description as default
     if (isMobile) {
       return (
-        <Link to={link}>
+        <Link to={readonly ? null : link}>
           <div className="m-circle-container">
             <img
               className="m-circle"
@@ -62,7 +65,7 @@ class Circle extends React.Component {
     }
 
     return (
-      <Link to={link}>
+      <Link to={readonly ? null : link}>
         <div
           className="circle-container"
           onMouseEnter={this.handleMouseEnter}

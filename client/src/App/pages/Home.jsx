@@ -18,14 +18,16 @@ export default function Home() {
       <Circle
         imageSrc="/home/archie.jpg"
         title="Projects"
-        description="Architecture portfolio"
+        description="Coming Soon"
         link="/projects"
+        readonly
       />
       <Circle
         imageSrc="/home/tower.jpg"
         title="Photography"
-        description="Taken by Jenny"
+        description="Coming Soon"
         link="/photography"
+        readonly
       />
       <Circle
         imageSrc="/home/model.jpg"
