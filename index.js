@@ -3,6 +3,7 @@ const fs = require('fs');
 const http = require('http');
 const express = require('express');
 const bodyParser = require('body-parser');
+const validator = require('validator');
 const isImage = require('is-image');
 
 const app = express();
@@ -53,11 +54,56 @@ app.get('/api/getPhotographyImages', (req, res) => {
 });
 
 /**
+ * Function that validates a post request body in an object as follows:
+ * {
+ *   success: boolean,
+ *   errors: string[]
+ * }
+ */
+function validateBody(name, email, subject, content) {
+  const result = {
+    success: true,
+    errors: [],
+  };
+
+  if (!validator.isLength(name, { min: 1, max: 70 })) {
+    result.errors.push('Name was invalid');
+  }
+
+  if (!validator.isEmail(email)) {
+    result.errors.push('Email was invalid');
+  }
+
+  if (!validator.isLength(subject, { min: 0, max: 70 })) {
+    result.errors.push('Subject was invalid');
+  }
+
+  if (!validator.isLength(content, { min: 20, max: 500 })) {
+    result.errors.push('Content was invalid');
+  }
+
+  if (result.errors.length > 0) {
+    result.success = false;
+  }
+
+  return result;
+}
+
+/**
  * API endpoint to send email to Jenny
  */
 app.post('/api/sendMail', (req, res) => {
-  console.log(req.body);
-  res.json({ success: false, errors: ['EMAIL IS WRONG BOI'] });
+  const {
+    name,
+    email,
+    subject,
+    content,
+  } = req.body;
+  const result = validateBody(name, email, subject, content);
+  res.json(result);
+
+  // Send the email using nodemailer
+  // Here
 });
 
 /**

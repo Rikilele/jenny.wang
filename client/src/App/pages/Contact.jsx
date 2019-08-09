@@ -98,13 +98,17 @@ export default class Contact extends React.Component {
     } = this.state;
     return (
       <div className="app">
+
         {this.renderAPIResponse()}
+
         <h1 className="app-title">
           Contact Jenny
         </h1>
+
         <p className="app-description">
           Pittsburgh - Vancouver - Shanghai
         </p>
+
         <form onSubmit={this.handleSubmit}>
           <input
             required
@@ -112,6 +116,7 @@ export default class Contact extends React.Component {
             type="text"
             name="name"
             value={name}
+            maxLength={70}
             onChange={this.handleChange}
           />
           <input
@@ -120,14 +125,15 @@ export default class Contact extends React.Component {
             type="email"
             name="email"
             value={email}
+            maxLength={320}
             onChange={this.handleChange}
           />
           <input
-            required
             placeholder="Subject"
             type="text"
             name="subject"
             value={subject}
+            maxLength={70}
             onChange={this.handleChange}
           />
           <textarea
@@ -136,9 +142,11 @@ export default class Contact extends React.Component {
             type="text"
             name="content"
             value={content}
-            onChange={this.handleChange}
             cols={60}
             rows={10}
+            minLength={20}
+            maxLength={500}
+            onChange={this.handleChange}
           />
           <button type="submit">Send</button>
         </form>
