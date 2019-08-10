@@ -1,11 +1,15 @@
 const path = require('path');
 const fs = require('fs');
 const http = require('http');
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const validator = require('validator');
 const isImage = require('is-image');
+const dotenv = require('dotenv');
+const nodemailer = require('nodemailer');
 
+dotenv.config();
 const app = express();
 const port = process.env.PORT || 5000;
 
@@ -89,6 +93,39 @@ function validateBody(name, email, subject, content) {
   return result;
 }
 
+function sendMail(name, email, subject, content) {
+  // Set up strings
+  const nameLine = `Name: ${name}\n`;
+  const emailLine = `Email: ${email}\n`;
+  const subjectLine = subject ? `Subject: ${subject}\n` : '';
+  const contentLine = `\n${content}`;
+
+  const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: process.env.GMAIL_USER,
+      pass: process.env.GMAIL_PASS,
+    },
+  });
+
+  const mailOptions = {
+    from: process.env.GMAIL_FROM,
+    to: process.env.GMAIL_TO,
+    bcc: process.env.GMAIL_BCC,
+    subject: `Message received from ${name}`,
+    text: `${nameLine}${emailLine}${subjectLine}${contentLine}`,
+  };
+
+  transporter.sendMail(mailOptions)
+    .then((info) => {
+      console.log(`+ Email sent from ${name}: ${info.response}`);
+    })
+    .catch((err) => {
+      console.log(`- Error sending email from ${name}`);
+      console.error(err);
+    });
+}
+
 /**
  * API endpoint to send email to Jenny
  */
@@ -100,10 +137,13 @@ app.post('/api/sendMail', (req, res) => {
     content,
   } = req.body;
   const result = validateBody(name, email, subject, content);
-  res.json(result);
 
-  // Send the email using nodemailer
-  // Here
+  // Send email only if validate succeeds
+  if (result.success) {
+    sendMail(name, email, subject, content);
+  }
+
+  res.json(result);
 });
 
 /**
