@@ -11,7 +11,7 @@ const nodemailer = require('nodemailer');
 
 dotenv.config();
 const app = express();
-const port = process.env.PORT || 5000;
+const port = process.env.PORT;
 
 /**
  * Ping the website every 20 mins to avoid idle state
@@ -19,7 +19,7 @@ const port = process.env.PORT || 5000;
  *   https://devcenter.heroku.com/articles/free-dyno-hours
  */
 setInterval(() => {
-  http.get('http://jenny-wang.herokuapp.com');
+  http.get(process.env.ROOT_URL);
 }, 20 * 60 * 1000);
 
 /**
@@ -157,5 +157,11 @@ app.get('*', (req, res) => {
  * Listen
  */
 app.listen(port, () => {
+  if (!port) {
+    console.log('- Environment variable PORT not found');
+    console.log('- Hint: Did you run "npm run setup" properly?');
+    process.exit(1);
+  }
+
   console.log(`Listening on port ${port}`);
 });

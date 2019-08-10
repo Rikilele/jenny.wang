@@ -4,12 +4,12 @@
   "description": "Portfolio for Jenny Wang built with Express, React, and React-Router",
   "main": "index.js",
   "scripts": {
-    "setup": "npm i && cd client && npm i",
+    "setup": "npm i && cd client && npm i && cd .. && node setup.js ",
     "start": "node index.js",
     "dev": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build",
-    "lint": "eslint index.js"
+    "lint": "eslint *.js"
   },
   "repository": {
     "type": "git",

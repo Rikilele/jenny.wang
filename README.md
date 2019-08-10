@@ -5,7 +5,7 @@ A portfolio website built for Jenny Wang using Express, React, and React-Router.
 
 1. Go to `/public/projects`
 2. Add a new project to `settings.json` in the following format:
-```json
+```ts
 {
   "id": {ID: number},
   "title": {TITLE: string},
@@ -33,9 +33,11 @@ $ git clone https://github.com/Rikilele/jenny.wang.git
 # Enter the created directory
 $ cd jenny.wang
 
-# Install all dependencies
+# Set up project
 $ npm run setup
 ```
+
+Then, edit the `.env` file to fit your needs (Required).
 
 ## Dev
 
