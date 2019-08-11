@@ -7,41 +7,6 @@ import './toast.css';
 import InputWrapper from './components/InputWrapper';
 
 /**
- * Requests API to send form input.
- * Invokes toasts depending on response.
- */
-function requestContactToAPI(name, email, subject, content) {
-  fetch('/api/sendMail', {
-    method: 'post',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      name,
-      email,
-      subject,
-      content,
-    }),
-  })
-    .then(res => res.json())
-    .then((apiResponse) => {
-      if (apiResponse.success) {
-        toast.success('Successfully sent!', {
-          position: toast.POSITION.BOTTOM_CENTER,
-          className: 'toast-success',
-          autoClose: 8000,
-        });
-      } else {
-        apiResponse.errors.forEach((error) => {
-          toast.error(error, {
-            position: toast.POSITION.BOTTOM_CENTER,
-            className: 'toast-error',
-            autoClose: 8000,
-          });
-        });
-      }
-    });
-}
-
-/**
  * Contact form submitted to /api/sendMail
  */
 export default class Contact extends React.Component {
@@ -87,6 +52,50 @@ export default class Contact extends React.Component {
   }
 
   /**
+   * Requests API to send form input.
+   * Invokes toasts depending on response.
+   */
+   requestContactToAPI(name, email, subject, content) {
+    fetch('/api/sendMail', {
+      method: 'post',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name,
+        email,
+        subject,
+        content,
+      }),
+    })
+      .then(res => res.json())
+      .then((apiResponse) => {
+        if (apiResponse.success) {
+          toast.success('Successfully sent!', {
+            position: toast.POSITION.BOTTOM_CENTER,
+            className: 'toast-success',
+            autoClose: 8000,
+          });
+
+          // Reset form
+          this.setState({
+            name: '',
+            email: '',
+            subject: '',
+            content: '',
+            validated: [true, true, true, true],
+          });
+        } else {
+          apiResponse.errors.forEach((error) => {
+            toast.error(error, {
+              position: toast.POSITION.BOTTOM_CENTER,
+              className: 'toast-error',
+              autoClose: 8000,
+            });
+          });
+        }
+      });
+  }
+
+  /**
    * Submits a post request to the API server to send an email.
    */
   handleSubmit(e) {
@@ -103,7 +112,7 @@ export default class Contact extends React.Component {
      * If validation passes, ask API
      */
     if (this.validateInput(name, email, subject, content)) {
-      requestContactToAPI(name, email, subject, content);
+      this.requestContactToAPI(name, email, subject, content);
     }
   }
 
