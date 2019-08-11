@@ -1,13 +1,13 @@
+h1, h2, h3, h4, h5, h6, p {
+  font-family: 'Open Sans', sans-serif;
+}
+
 a {
   color: #000000;
 }
 
 a:hover {
   color: #aaaaaa;
-}
-
-textarea {
-  resize: none;
 }
 
 .app {
@@ -20,21 +20,6 @@ textarea {
   margin: 0 10vw 0 10vw;
 }
 
-.footer {
-  text-align: right;
-  position: fixed;
-  width: 100%;
-  left: 0;
-  bottom: 0;
-  background: #ffffff;
-  border-top: 1px solid rgba(26, 26, 26, 0.5);
-}
-
-.footer-nav {
-  margin: 8px 8%;
-  font-family: 'Open Sans', sans-serif;
-}
-
 .app-title {
   font-family: 'La Belle Aurore', cursive;
   font-size: calc(80px + 2vmin);
@@ -43,7 +28,6 @@ textarea {
 }
 
 .app-description {
-  font-family: 'Open Sans', sans-serif;
   padding-bottom: 5%;
 }
 
@@ -72,6 +56,7 @@ textarea {
   border-color: #aaaaaa;
   font-size: 100%;
   border-radius: 5px;
+  cursor: pointer;
 }
 
 .app-button:hover {
