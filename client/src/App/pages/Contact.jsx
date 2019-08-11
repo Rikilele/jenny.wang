@@ -135,9 +135,42 @@ export default class Contact extends React.Component {
     } = this.state;
     return (
       <div className={isMobile ? 'app-mobile' : 'app'}>
-        <p className="app-description">
-          Instagram and Email
-        </p>
+        <h2>
+          Contact
+        </h2>
+        <table className="app-table">
+          <tbody>
+            <tr>
+              <td>
+                <a
+                  href="mailto:jiayi3@andrew.cmu.edu"
+                  target="__blank"
+                >
+                  <img
+                    src="/emailicon.png"
+                    alt="Email"
+                    width="30px"
+                  />
+                </a>
+              </td>
+              <td>
+                <a
+                  href="https://www.instagram.com/jen_nwang/"
+                  target="__blank"
+                >
+                  <img
+                    src="/instaicon.png"
+                    alt="Instagram"
+                    width="30px"
+                  />
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <h3>
+          or send a message
+        </h3>
         <form onSubmit={this.handleSubmit}>
           <InputWrapper
             required

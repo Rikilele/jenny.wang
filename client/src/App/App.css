@@ -31,6 +31,12 @@ a:hover {
   padding-bottom: 5%;
 }
 
+.app-table {
+  table-layout: fixed;
+  width: 40%;
+  margin: 0 30%;
+}
+
 .app-input {
   -webkit-appearance: none;
   -moz-appearance: none;
