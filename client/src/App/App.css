@@ -15,6 +15,11 @@ textarea {
   margin: 0 20vw 0 20vw;
 }
 
+.app-mobile {
+  text-align: center;
+  margin: 0 10vw 0 10vw;
+}
+
 .footer {
   text-align: right;
   position: fixed;
@@ -40,4 +45,43 @@ textarea {
 .app-description {
   font-family: 'Open Sans', sans-serif;
   padding-bottom: 5%;
+}
+
+.app-input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: calc(100% - 20px);
+  padding: 5px 10px;
+  border: 1px solid #aaaaaa;
+  border-radius: 5px;
+  font-size: 100%;
+}
+
+.app-input:focus {
+  box-shadow: 0 0 4px #aaaaaa;
+  outline: none;
+  transition: ease-in-out 0.1s;
+}
+
+.app-button {
+  margin-top: 1em;
+  width: 30%;
+  padding: .375rem .75rem;
+  background: transparent;
+  border-color: #aaaaaa;
+  font-size: 100%;
+  border-radius: 5px;
+}
+
+.app-button:hover {
+  box-shadow: 0 0 4px #aaaaaa;
+  outline: none;
+  transition: ease-in-out 0.1s;
+}
+
+.app-button:focus {
+  outline: none;
+  border-color: #222222;
+  box-shadow: 0 0 4px #222222;
 }

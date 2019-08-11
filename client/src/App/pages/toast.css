@@ -1,0 +1,11 @@
+.toast-success {
+  font-family: 'Open Sans', sans-serif;
+  background: #bbddff;
+  color: #222222;
+}
+
+.toast-error {
+  font-family: 'Open Sans', sans-serif;
+  background: #ffdddd;
+  color: #222222;
+}
