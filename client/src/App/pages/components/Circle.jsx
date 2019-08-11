@@ -9,7 +9,7 @@ const propTypes = {
   title: PropTypes.string,
   description: PropTypes.string,
   link: PropTypes.string,
-  readonly: PropTypes.boolean,
+  readonly: PropTypes.bool,
 };
 
 const defaultProps = {
