@@ -54,7 +54,7 @@ export default class Contact extends React.Component {
    * Requests API to send form input.
    * Invokes toasts depending on response.
    */
-   requestContactToAPI(name, email, subject, content) {
+  requestContactToAPI(name, email, subject, content) {
     fetch('/api/sendMail', {
       method: 'post',
       headers: { 'Content-Type': 'application/json' },
