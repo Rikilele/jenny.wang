@@ -2,7 +2,6 @@ import React from 'react';
 import { isMobile } from 'react-device-detect';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
-import './carousel.css';
 
 export default class Modeling extends React.Component {
   constructor(props) {
