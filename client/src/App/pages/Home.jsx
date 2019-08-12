@@ -10,9 +10,9 @@ export default function Home() {
         Jenny Wang
       </h1>
       <p className="app-description">
-        Jenny Jiayi Wang is a rising sophomore at Carnegie Mellon University.
+        Jenny Wang is a rising sophomore at Carnegie Mellon University.
         <br />
-        She studies Architecture, with special interests in interior design.
+        She studies Architecture with an interest in interior design.
         <br />
         <br />
         <Link to="/contact">Contact</Link>
