@@ -4,7 +4,7 @@ import { isMobile } from 'react-device-detect';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './toast.css';
-import InputWrapper from './components/InputWrapper';
+import InputWrapper from '../components/InputWrapper';
 
 /**
  * Contact form submitted to /api/sendMail

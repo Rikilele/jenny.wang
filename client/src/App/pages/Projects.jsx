@@ -1,5 +1,5 @@
 import React from 'react';
-import Circle from './components/Circle';
+import Circle from '../components/Circle';
 
 export default class Projects extends React.Component {
   constructor(props) {
