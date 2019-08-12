@@ -1,10 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import AppContainer from '../components/AppContainer';
 import Circle from '../components/Circle';
 
 export default function Home() {
   return (
-    <div className="app">
+    <AppContainer>
       <h1 className="app-title">
         Jenny Wang
       </h1>
@@ -36,6 +37,6 @@ export default function Home() {
         description="Photos of Jenny"
         link="/modeling"
       />
-    </div>
+    </AppContainer>
   );
 }

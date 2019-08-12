@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import PropTypes from 'prop-types';
+import AppContainer from '../components/AppContainer';
 
 const propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
@@ -29,9 +30,9 @@ class Project extends React.Component {
   render() {
     const { content } = this.state;
     return (
-      <div className="app">
+      <AppContainer>
         <ReactMarkdown source={content} />
-      </div>
+      </AppContainer>
     );
   }
 }

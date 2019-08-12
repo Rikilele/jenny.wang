@@ -1,4 +1,5 @@
 import React from 'react';
+import AppContainer from '../components/AppContainer';
 import Circle from '../components/Circle';
 
 export default class Projects extends React.Component {
@@ -25,19 +26,17 @@ export default class Projects extends React.Component {
     const { projects } = this.state;
 
     return (
-      <div className="app">
-        <div>
-          {projects.map(project => (
-            <Circle
-              key={project.id}
-              imageSrc={`/projects/${project.id}/${project.id}.jpg`}
-              title={project.title}
-              description={project.description}
-              link={`/projects/details/${project.id}`}
-            />
-          ))}
-        </div>
-      </div>
+      <AppContainer>
+        {projects.map(project => (
+          <Circle
+            key={project.id}
+            imageSrc={`/projects/${project.id}/${project.id}.jpg`}
+            title={project.title}
+            description={project.description}
+            link={`/projects/details/${project.id}`}
+          />
+        ))}
+      </AppContainer>
     );
   }
 }

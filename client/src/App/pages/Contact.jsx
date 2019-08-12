@@ -1,8 +1,8 @@
 import React from 'react';
 import validator from 'validator';
-import { isMobile } from 'react-device-detect';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import AppContainer from '../components/AppContainer';
 import InputWrapper from '../components/InputWrapper';
 
 /**
@@ -133,7 +133,7 @@ export default class Contact extends React.Component {
       validated,
     } = this.state;
     return (
-      <div className={isMobile ? 'app-mobile' : 'app'}>
+      <AppContainer>
         <h2>
           Contact
         </h2>
@@ -239,7 +239,7 @@ export default class Contact extends React.Component {
           </button>
           <ToastContainer />
         </form>
-      </div>
+      </AppContainer>
     );
   }
 }
