@@ -35,54 +35,83 @@ class Circle extends React.Component {
     this.setState({ hovered: false });
   }
 
-  render() {
+  renderMobileCircle() {
+    const {
+      imageSrc,
+      title,
+      description,
+    } = this.props;
+
+    return (
+      <div className="m-circle-container">
+        <img
+          className="m-circle"
+          src={imageSrc}
+          alt={title}
+        />
+        <div className="m-circle-layover">
+          <div className="m-circle-title">{title}</div>
+          <div className="m-circle-description">{description}</div>
+        </div>
+      </div>
+    );
+  }
+
+  renderBrowserCircle() {
     const { hovered } = this.state;
     const {
       imageSrc,
       title,
       description,
+    } = this.props;
+
+    return (
+      <div
+        className={hovered ? 'circle-container circle-container-hover' : 'circle-container'}
+        onMouseEnter={this.handleMouseEnter}
+        onMouseLeave={this.handleMouseLeave}
+      >
+        <img
+          className={hovered ? 'circle circle-hover' : 'circle'}
+          src={imageSrc}
+          alt={title}
+        />
+        {hovered && (
+          <div className="circle-layover">
+            <div className="circle-title">{title}</div>
+            <div className="circle-description">{description}</div>
+          </div>
+        )}
+      </div>
+    );
+  }
+
+  render() {
+    const {
       link,
       readonly,
     } = this.props;
 
     // Mobile will show title and description as default
+    if (isMobile && readonly) {
+      return this.renderMobileCircle();
+    }
+
     if (isMobile) {
       return (
-        <Link to={readonly ? null : link}>
-          <div className="m-circle-container">
-            <img
-              className="m-circle"
-              src={imageSrc}
-              alt={title}
-            />
-            <div className="m-circle-layover">
-              <div className="m-circle-title">{title}</div>
-              <div className="m-circle-description">{description}</div>
-            </div>
-          </div>
+        <Link to={link}>
+          {this.renderMobileCircle()}
         </Link>
       );
     }
 
+    if (readonly) {
+      return this.renderBrowserCircle();
+    }
+
     return (
-      <Link to={readonly ? null : link}>
-        <div
-          className="circle-container"
-          onMouseEnter={this.handleMouseEnter}
-          onMouseLeave={this.handleMouseLeave}
-        >
-          <img
-            className={hovered ? 'circle circle-hover' : 'circle'}
-            src={imageSrc}
-            alt={title}
-          />
-          {hovered && (
-            <div className="circle-layover">
-              <div className="circle-title">{title}</div>
-              <div className="circle-description">{description}</div>
-            </div>
-          )}
-        </div>
+      <Link to={link}>
+        {this.renderBrowserCircle()}
       </Link>
     );
   }
