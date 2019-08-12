@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Circle from './components/Circle';
 
 export default function Home() {
@@ -13,7 +14,7 @@ export default function Home() {
         She studies Architecture, with special interests in interior design.
         <br />
         <br />
-        <a href="/contact">Contact</a>
+        <Link to="/contact">Contact</Link>
       </p>
       <Circle
         imageSrc="/home/archie.jpg"
