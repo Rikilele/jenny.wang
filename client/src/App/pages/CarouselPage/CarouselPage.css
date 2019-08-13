@@ -1,0 +1,24 @@
+.carousel-page-image {
+  height: auto !important;
+  max-height: 100% !important;
+  width: auto !important;
+  max-width: 100% !important;
+  margin: auto !important;
+  display: block !important;
+}
+
+.carousel-page-height {
+  height: 63vh;
+  min-height: 400px;
+}
+
+.m-carousel-page-height {
+  height: 76vh;
+}
+
+/**
+ * DANGER: Overwrites react-responsive-carousel's classes
+ */
+.control-arrow {
+  width: 15vw;
+}

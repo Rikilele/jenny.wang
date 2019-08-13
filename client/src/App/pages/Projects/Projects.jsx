@@ -1,6 +1,19 @@
+/**
+ * Node modules
+ */
 import React from 'react';
-import AppContainer from '../components/AppContainer';
-import Circle from '../components/Circle';
+
+/**
+ * Custom components
+ */
+import AppContainer from '../../components/AppContainer/AppContainer';
+import Circle from '../../components/Circle/Circle';
+import Padding from '../../components/Padding/Padding';
+
+/**
+ * Routing
+ */
+import routes from '../routes.json';
 
 export default class Projects extends React.Component {
   constructor(props) {
@@ -24,9 +37,9 @@ export default class Projects extends React.Component {
 
   render() {
     const { projects } = this.state;
-
     return (
-      <AppContainer>
+      <AppContainer showNav tabs={routes}>
+        <Padding />
         {projects.map(project => (
           <Circle
             key={project.id}

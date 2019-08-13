@@ -1,0 +1,18 @@
+.home-title {
+  font-family: 'La Belle Aurore', cursive;
+  font-size: calc(8vw + 12px);
+  margin: 0;
+  padding-top: 2vh;
+}
+
+.home-description {
+  margin: 4vh 0;
+}
+
+.home-link {
+  color: #000000;
+}
+
+.home-link:hover {
+  color: #aaaaaa;
+}

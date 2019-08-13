@@ -1,12 +1,23 @@
+/**
+ * Node modules
+ */
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
+
+/**
+ * Custom components
+ */
+import Home from './pages/Home/Home';
+import Projects from './pages/Projects/Projects';
+import Project from './pages/Project/Project';
+import Photography from './pages/Photography/Photography';
+import Modeling from './pages/Modeling/Modeling';
+import Contact from './pages/Contact/Contact';
+
+/**
+ * Styles
+ */
 import './App.css';
-import Home from './pages/Home';
-import Projects from './pages/Projects';
-import Project from './pages/Project';
-import Photography from './pages/Photography';
-import Modeling from './pages/Modeling';
-import Contact from './pages/Contact';
 
 export default function App() {
   return (
@@ -15,7 +26,7 @@ export default function App() {
       <Route exact path="/projects" component={Projects} />
       <Route path="/projects/details/:id" component={Project} />
       <Route path="/photography" component={Photography} />
-      <Route path="/modeling" component={Modeling} />
+      <Route path="/modeling" component={Modeling}/>
       <Route path="/contact" component={Contact} />
     </Switch>
   );

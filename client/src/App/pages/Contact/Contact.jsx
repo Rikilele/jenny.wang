@@ -1,9 +1,34 @@
+/**
+ * Node modules
+ */
 import React from 'react';
 import validator from 'validator';
 import { ToastContainer, toast } from 'react-toastify';
+
+/**
+ * Custom components
+ */
+import AppContainer from '../../components/AppContainer/AppContainer';
+import HorizontalTable from '../../components/HorizontalTable/HorizontalTable';
+import InputWrapper from '../../components/InputWrapper/InputWrapper';
+import Padding from '../../components/Padding/Padding';
+
+/**
+ * Assets
+ */
+import instaIcon from './instaicon.png';
+import emailIcon from './emailicon.png';
+
+/**
+ * Styles
+ */
 import 'react-toastify/dist/ReactToastify.css';
-import AppContainer from '../components/AppContainer';
-import InputWrapper from '../components/InputWrapper';
+import './Contact.css';
+
+/**
+ * Routing
+ */
+import routes from '../routes.json';
 
 /**
  * Contact form submitted to /api/sendMail
@@ -70,7 +95,7 @@ export default class Contact extends React.Component {
         if (apiResponse.success) {
           toast.success('Successfully sent!', {
             position: toast.POSITION.BOTTOM_CENTER,
-            className: 'toast-success',
+            className: 'contact-toast-success',
             autoClose: 8000,
           });
 
@@ -86,7 +111,7 @@ export default class Contact extends React.Component {
           apiResponse.errors.forEach((error) => {
             toast.error(error, {
               position: toast.POSITION.BOTTOM_CENTER,
-              className: 'toast-error',
+              className: 'contact-toast-error',
               autoClose: 8000,
             });
           });
@@ -133,43 +158,19 @@ export default class Contact extends React.Component {
       validated,
     } = this.state;
     return (
-      <AppContainer>
-        <h2>
-          Contact
-        </h2>
-        <table className="app-table">
-          <tbody>
-            <tr>
-              <td>
-                <a
-                  href="mailto:jiayi3@andrew.cmu.edu"
-                  target="__blank"
-                >
-                  <img
-                    src="/emailicon.png"
-                    alt="Email"
-                    width="30px"
-                  />
-                </a>
-              </td>
-              <td>
-                <a
-                  href="https://www.instagram.com/jen_nwang/"
-                  target="__blank"
-                >
-                  <img
-                    src="/instaicon.png"
-                    alt="Instagram"
-                    width="30px"
-                  />
-                </a>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <h3>
+      <AppContainer showNav tabs={routes}>
+        <Padding />
+        <HorizontalTable>
+          <a href="mailto:jiayi3@andrew.cmu.edu" target="__blank">
+            <img src={emailIcon} alt="Email" width="30px" />
+          </a>
+          <a href="https://www.instagram.com/jen_nwang/" target="__blank">
+            <img src={instaIcon} alt="Instagram" width="30px" />
+          </a>
+        </HorizontalTable>
+        <p>
           or send a message
-        </h3>
+        </p>
         <form onSubmit={this.handleSubmit}>
           <InputWrapper
             required
@@ -178,7 +179,7 @@ export default class Contact extends React.Component {
           >
             <input
               required
-              className="app-input"
+              className="contact-input"
               type="text"
               name="name"
               value={name}
@@ -193,7 +194,7 @@ export default class Contact extends React.Component {
           >
             <input
               required
-              className="app-input"
+              className="contact-input"
               type="email"
               name="email"
               value={email}
@@ -206,7 +207,7 @@ export default class Contact extends React.Component {
             errorMessage={validated[2] ? '' : 'Subject must be under 70 characters'}
           >
             <input
-              className="app-input"
+              className="contact-input"
               type="text"
               name="subject"
               value={subject}
@@ -221,7 +222,7 @@ export default class Contact extends React.Component {
           >
             <textarea
               required
-              className="app-input"
+              className="contact-input"
               type="text"
               name="content"
               value={content}
@@ -231,14 +232,10 @@ export default class Contact extends React.Component {
               onChange={this.handleChange}
             />
           </InputWrapper>
-          <button
-            className="app-button"
-            type="submit"
-          >
-            Send
-          </button>
+          <button className="contact-button" type="submit">Send</button>
           <ToastContainer />
         </form>
+        <Padding />
       </AppContainer>
     );
   }

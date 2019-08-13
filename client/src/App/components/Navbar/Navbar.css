@@ -1,0 +1,20 @@
+.navbar {
+  height: 3rem;
+  border-bottom: 1px solid #aaaaaa;
+  padding-right: 5vw;
+  padding-top: 1vh;
+  padding-bottom: 1vh;
+}
+
+.navbar-tab {
+  color: #000000;
+  line-height: 1rem;
+  height: 1rem;
+  padding: 1rem 2rem;
+  float: right;
+  text-decoration: none;
+}
+
+.navbar-tab:hover {
+  background: #eeeeee;
+}

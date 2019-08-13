@@ -1,0 +1,5 @@
+.horizontal-table {
+  table-layout: fixed;
+  width: 40%;
+  margin: 0 30%;
+}

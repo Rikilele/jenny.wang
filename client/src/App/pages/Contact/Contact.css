@@ -1,0 +1,52 @@
+.contact-input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: calc(100% - 20px);
+  padding: 5px 10px;
+  border: 1px solid #aaaaaa;
+  border-radius: 5px;
+  font-size: 100%;
+}
+
+.contact-input:focus {
+  box-shadow: 0 0 4px #aaaaaa;
+  outline: none;
+  transition: ease-in-out 0.1s;
+}
+
+.contact-button {
+  margin-top: 1em;
+  width: 30%;
+  padding: .375rem .75rem;
+  background: transparent;
+  border-color: #aaaaaa;
+  font-size: 100%;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.contact-button:hover {
+  box-shadow: 0 0 4px #aaaaaa;
+  outline: none;
+  transition: ease-in-out 0.2s;
+}
+
+.contact-button:focus {
+  outline: none;
+  border-color: #222222;
+  box-shadow: 0 0 4px #222222;
+}
+
+/**
+ * Custom toast styles
+ */
+.contact-toast-success {
+  background: #bbddff;
+  color: #222222;
+}
+
+.contact-toast-error {
+  background: #ffdddd;
+  color: #222222;
+}

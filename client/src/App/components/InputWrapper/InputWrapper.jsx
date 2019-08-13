@@ -1,5 +1,12 @@
+/**
+ * Node modules
+ */
 import React from 'react';
 import PropTypes from 'prop-types';
+
+/**
+ * Styles
+ */
 import './InputWrapper.css';
 
 const propTypes = {

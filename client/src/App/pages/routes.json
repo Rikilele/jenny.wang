@@ -1,0 +1,22 @@
+[
+  {
+    "label": "Home",
+    "link": "/"
+  },
+  {
+    "label": "Projects",
+    "link": "/projects"
+  },
+  {
+    "label": "Photography",
+    "link": "/photography"
+  },
+  {
+    "label": "Modeling",
+    "link": "/modeling"
+  },
+  {
+    "label": "Contact",
+    "link": "/contact"
+  }
+]

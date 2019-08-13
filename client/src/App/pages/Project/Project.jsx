@@ -1,7 +1,19 @@
+/**
+ * Node modules
+ */
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import PropTypes from 'prop-types';
-import AppContainer from '../components/AppContainer';
+
+/**
+ * Custom components
+ */
+import AppContainer from '../../components/AppContainer/AppContainer';
+
+/**
+ * Routing
+ */
+import routes from '../routes.json';
 
 const propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
@@ -30,7 +42,7 @@ class Project extends React.Component {
   render() {
     const { content } = this.state;
     return (
-      <AppContainer>
+      <AppContainer showNav tabs={routes}>
         <ReactMarkdown source={content} />
       </AppContainer>
     );

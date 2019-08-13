@@ -1,7 +1,14 @@
+/**
+ * Node modules
+ */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { isMobile } from 'react-device-detect';
+
+/**
+ * Styles
+ */
 import './Circle.css';
 
 const propTypes = {
@@ -41,7 +48,6 @@ class Circle extends React.Component {
       title,
       description,
     } = this.props;
-
     return (
       <div className="m-circle-container">
         <img
@@ -58,21 +64,20 @@ class Circle extends React.Component {
   }
 
   renderBrowserCircle() {
-    const { hovered } = this.state;
     const {
       imageSrc,
       title,
       description,
     } = this.props;
-
+    const { hovered } = this.state;
     return (
       <div
-        className={hovered ? 'circle-container circle-container-hover' : 'circle-container'}
+        className={`circle-container ${hovered ? 'circle-container-hover' : ''}`}
         onMouseEnter={this.handleMouseEnter}
         onMouseLeave={this.handleMouseLeave}
       >
         <img
-          className={hovered ? 'circle circle-hover' : 'circle'}
+          className={`circle ${hovered ? 'circle-hover' : ''}`}
           src={imageSrc}
           alt={title}
         />
