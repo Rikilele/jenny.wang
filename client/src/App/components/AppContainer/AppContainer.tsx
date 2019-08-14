@@ -17,10 +17,7 @@ import './AppContainer.css';
 /**
  * Types
  */
-interface Tab {
-  label: string;
-  link: string;
-}
+import { Tab } from '../../types';
 
 interface Props {
   children: ReactNode | ReactNode[];
