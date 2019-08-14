@@ -29,13 +29,7 @@ interface State {
  * Displays an interactive circle with an image, title, and description.
  * Can be made a link depending on {props.link}: string | null
  */
-export default class Circle extends React.Component<Props, State> {
-
-  static defaultProps = {
-    title: '',
-    description: '',
-  };
-
+class Circle extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = { hovered: false };
@@ -139,3 +133,11 @@ export default class Circle extends React.Component<Props, State> {
     );
   }
 }
+
+// @ts-ignore
+Circle.defaultProps = {
+  title: '',
+  description: '',
+};
+
+export default Circle;
