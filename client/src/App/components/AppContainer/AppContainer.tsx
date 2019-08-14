@@ -37,7 +37,7 @@ function AppContainer(props: Props) {
     children,
     showNav,
     tabs,
-  }: Partial<Props> = props;
+  }: Props = props;
   return (
     <div>
       {showNav && (

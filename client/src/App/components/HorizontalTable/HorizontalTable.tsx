@@ -22,7 +22,7 @@ interface Props {
 export default function HorizontalTable(props: Props) {
   const {
     children,
-  }: Partial<Props> = props;
+  }: Props = props;
   return (
     <table className="horizontal-table">
       <tbody>
