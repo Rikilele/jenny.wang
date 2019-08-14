@@ -64,7 +64,7 @@ app.get('/api/getPhotographyImages', (req, res) => {
  *   errors: string[]
  * }
  */
-function validateBody(name, email, subject, content) {
+function validateBody(name: string, email: string, subject: string, content: string) {
   const result = {
     success: true,
     errors: [],

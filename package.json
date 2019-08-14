@@ -4,11 +4,10 @@
   "description": "Portfolio for Jenny Wang built with Express, React, and React-Router",
   "main": "index.js",
   "scripts": {
-    "setup": "yarn install && cd client && yarn install && cd .. && node setup.js ",
-    "start": "node index.js",
-    "dev": "nodemon index.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "heroku-postbuild": "cd client && yarn install --production=false && yarn build",
+    "start": "node build/index.js",
+    "dev": "ts-node-dev --respawn --transpileOnly index.ts",
+    "build": "yarn install && node setup.js && tsc && cd client && yarn build",
+    "heroku-postbuild": "tsc && cd client && yarn install --production=false && yarn build",
     "lint": "eslint *.js"
   },
   "repository": {
@@ -31,10 +30,13 @@
     "validator": "^11.1.0"
   },
   "devDependencies": {
+    "@types/express": "^4.17.0",
     "eslint": "^5.16.0",
     "eslint-config-airbnb-base": "^13.2.0",
     "eslint-plugin-import": "^2.18.2",
-    "nodemon": "^1.19.1"
+    "nodemon": "^1.19.1",
+    "ts-node-dev": "^1.0.0-pre.40",
+    "typescript": "^3.5.3"
   },
   "engines": {
     "node": "10.15.0",

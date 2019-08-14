@@ -33,8 +33,8 @@ $ git clone https://github.com/Rikilele/jenny.wang.git
 # Enter the created directory
 $ cd jenny.wang
 
-# Set up project
-$ yarn setup
+# Build project
+$ yarn build
 ```
 
 Then, edit the `.env` file to fit your needs (Required).
@@ -55,12 +55,11 @@ $ yarn start
 Checking before deployment (http://localhost:5000)
 
 ```sh
+# Build project
+$ yarn build
+
 # Start server on top level directory
 $ yarn start
-
-# Build client views
-$ cd client
-$ yarn build
 ```
 
 Linting
