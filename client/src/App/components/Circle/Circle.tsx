@@ -2,7 +2,6 @@
  * Node modules
  */
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { isMobile } from 'react-device-detect';
 
@@ -11,23 +10,25 @@ import { isMobile } from 'react-device-detect';
  */
 import './Circle.css';
 
-const propTypes = {
-  imageSrc: PropTypes.string.isRequired,
-  title: PropTypes.string,
-  description: PropTypes.string,
-  link: PropTypes.string,
-  readonly: PropTypes.bool,
-};
+interface Props {
+  imageSrc: string;
+  link: string | null;
+  title?: string;
+  description?: string;
+}
 
-const defaultProps = {
-  title: '',
-  description: '',
-  link: '',
-  readonly: false,
-};
+interface State {
+  hovered: boolean;
+}
 
-class Circle extends React.Component {
-  constructor(props) {
+class Circle extends React.Component<Props, State> {
+
+  static defaultProps = {
+    title: '',
+    description: '',
+  };
+
+  constructor(props: Props) {
     super(props);
     this.state = { hovered: false };
     this.handleMouseEnter = this.handleMouseEnter.bind(this);
@@ -47,7 +48,7 @@ class Circle extends React.Component {
       imageSrc,
       title,
       description,
-    } = this.props;
+    }: Partial<Props> = this.props;
     return (
       <div className="m-circle-container">
         <img
@@ -68,8 +69,10 @@ class Circle extends React.Component {
       imageSrc,
       title,
       description,
-    } = this.props;
-    const { hovered } = this.state;
+    }: Partial<Props> = this.props;
+    const {
+      hovered,
+    }: State = this.state;
     return (
       <div
         className={`circle-container ${hovered ? 'circle-container-hover' : ''}`}
@@ -94,35 +97,33 @@ class Circle extends React.Component {
   render() {
     const {
       link,
-      readonly,
-    } = this.props;
+    }: Partial<Props> = this.props;
 
     // Mobile will show title and description as default
-    if (isMobile && readonly) {
+    if (isMobile && !link) {
       return this.renderMobileCircle();
     }
 
     if (isMobile) {
       return (
+        // @ts-ignore
         <Link to={link}>
           {this.renderMobileCircle()}
         </Link>
       );
     }
 
-    if (readonly) {
+    if (!link) {
       return this.renderBrowserCircle();
     }
 
     return (
+      // @ts-ignore
       <Link to={link}>
         {this.renderBrowserCircle()}
       </Link>
     );
   }
 }
-
-Circle.propTypes = propTypes;
-Circle.defaultProps = defaultProps;
 
 export default Circle;
