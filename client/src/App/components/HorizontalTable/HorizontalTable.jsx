@@ -20,6 +20,7 @@ function HorizontalTable(props) {
       <tbody>
         <tr>
           {children.map((child, i) => (
+            // eslint-disable-next-line react/no-array-index-key
             <td key={i}>
               {child}
             </td>
