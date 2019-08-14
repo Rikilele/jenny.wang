@@ -24,8 +24,8 @@ A portfolio website built for Jenny Wang using Express, React, and React-Router.
 # Confirm node version >= 10.15.0
 $ node -v
 
-# Confirm npm version >= 6.10.2
-$ npm -v
+# Confirm yarn version >= 1.17.3
+$ yarn -v
 
 # Clone the repository
 $ git clone https://github.com/Rikilele/jenny.wang.git
@@ -34,7 +34,7 @@ $ git clone https://github.com/Rikilele/jenny.wang.git
 $ cd jenny.wang
 
 # Set up project
-$ npm run setup
+$ yarn setup
 ```
 
 Then, edit the `.env` file to fit your needs (Required).
@@ -45,29 +45,29 @@ Recommended for development (http://localhost:3000)
 
 ```sh
 # Start API server on top level directory
-$ npm run dev
+$ yarn dev
 
 # Start client server (new tab)
 $ cd client
-$ npm start
+$ yarn start
 ```
 
 Checking before deployment (http://localhost:5000)
 
 ```sh
 # Start server on top level directory
-$ npm start
+$ yarn start
 
 # Build client views
 $ cd client
-$ npm run build
+$ yarn build
 ```
 
 Linting
 
 ```sh
 # For both top level directory and /client
-$ npm run lint
+$ yarn lint
 ```
 
 ## Sources
