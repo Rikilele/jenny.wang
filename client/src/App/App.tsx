@@ -19,7 +19,7 @@ import Contact from './pages/Contact/Contact';
  */
 import './App.css';
 
-export default function App(): React.FC {
+export default function App() {
   return (
     <Switch>
       <Route exact path="/" component={Home} />
