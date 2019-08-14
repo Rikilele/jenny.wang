@@ -62,6 +62,13 @@ $ yarn build
 $ yarn start
 ```
 
+Manually compile TypeScript to JavaScript
+
+```sh
+# In top level directory
+$ yarn tsc
+```
+
 Linting
 
 ```sh

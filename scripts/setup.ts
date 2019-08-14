@@ -16,7 +16,7 @@ try {
   console.log('+ Searching for .env file');
 
   // Check if .env file exists
-  if (fs.existsSync('.env')) {
+  if (fs.existsSync('../.env')) {
     console.log('+ Found pre-configured .env file');
 
     // Check if all variables are set properly
@@ -58,7 +58,7 @@ try {
 
     // Declare all additional variables
     } else {
-      const logger = fs.createWriteStream('.env', { flags: 'a' });
+      const logger = fs.createWriteStream('../.env', { flags: 'a' });
       logger.on('open', () => {
         logger.write(`\n${additionalLines.join('')}`);
         logger.close();
@@ -72,7 +72,7 @@ try {
   } else {
     console.log('+ Could not find .env file');
     console.log('+ Initializing .env file');
-    const logger = fs.createWriteStream('.env', { flags: 'a' });
+    const logger = fs.createWriteStream('../.env', { flags: 'a' });
     logger.on('open', () => {
       const fullAddition = portLine.concat(
         rootLine,
