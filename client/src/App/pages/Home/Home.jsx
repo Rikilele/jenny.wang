@@ -12,6 +12,13 @@ import Circle from '../../components/Circle/Circle';
 import Padding from '../../components/Padding/Padding';
 
 /**
+ * Assets
+ */
+import archieImg from './archie.jpg';
+import modelImg from './model.jpg';
+import towerImg from './tower.jpg';
+
+/**
  * Styles
  */
 import './Home.css';
@@ -32,19 +39,19 @@ export default function Home() {
         <Link to="/contact" className="home-link">Contact</Link>
       </p>
       <Circle
-        imageSrc="/home/archie.jpg"
+        imageSrc={archieImg}
         title="Projects"
         description="Coming Soon"
         link="/projects"
       />
       <Circle
-        imageSrc="/home/tower.jpg"
+        imageSrc={towerImg}
         title="Photography"
         description="Coming Soon"
         link="/photography"
       />
       <Circle
-        imageSrc="/home/model.jpg"
+        imageSrc={modelImg}
         title="Modeling"
         description="Photos of Jenny"
         link="/modeling"
