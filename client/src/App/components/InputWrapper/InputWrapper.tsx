@@ -1,34 +1,33 @@
 /**
  * Node modules
  */
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { ReactNode } from 'react';
 
 /**
  * Styles
  */
 import './InputWrapper.css';
 
-const propTypes = {
-  required: PropTypes.bool,
-  children: PropTypes.element.isRequired,
-  label: PropTypes.string,
-  errorMessage: PropTypes.string,
-};
+/**
+ * Types
+ */
+interface Props {
+  required?: boolean;
+  children: ReactNode;
+  label?: string;
+  errorMessage?: string;
+}
 
-const defaultProps = {
-  required: false,
-  label: '',
-  errorMessage: '',
-};
-
-function InputWrapper(props) {
+/**
+ * Wraps any input with a label and error message if needed.
+ */
+function InputWrapper(props: Props) {
   const {
     required,
     children,
     label,
     errorMessage,
-  } = props;
+  }: Props = props;
   return (
     <div className="input-wrapper">
       <p>
@@ -41,7 +40,10 @@ function InputWrapper(props) {
   );
 }
 
-InputWrapper.propTypes = propTypes;
-InputWrapper.defaultProps = defaultProps;
+InputWrapper.defaultProps = {
+  required: false,
+  label: '',
+  errorMessage: '',
+};
 
 export default InputWrapper;
