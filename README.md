@@ -33,8 +33,8 @@ $ git clone https://github.com/Rikilele/jenny.wang.git
 # Enter the created directory
 $ cd jenny.wang
 
-# Build project
-$ yarn build
+# Set up project
+$ yarn setup
 ```
 
 Then, edit the `.env` file to fit your needs (Required).

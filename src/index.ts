@@ -1,14 +1,23 @@
-const path = require('path');
-const fs = require('fs');
-const http = require('http');
+/**
+ * Node built-in
+ */
+import path from 'path';
+import fs from 'fs';
+import http from 'http';
 
-const express = require('express');
-const bodyParser = require('body-parser');
-const validator = require('validator');
-const isImage = require('is-image');
-const dotenv = require('dotenv');
-const nodemailer = require('nodemailer');
+/**
+ * Node modules
+ */
+import express from 'express';
+import bodyParser from 'body-parser';
+import validator from 'validator';
+import isImage from 'is-image';
+import dotenv from 'dotenv';
+import nodemailer from 'nodemailer';
 
+/**
+ * Settings
+ */
 dotenv.config();
 const app = express();
 const port = process.env.PORT;
@@ -25,8 +34,8 @@ setInterval(() => {
 /**
  * Middleware
  */
-app.use(express.static(path.join(__dirname, 'client/build')));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '../client/build')));
+app.use(express.static(path.join(__dirname, '../public')));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
@@ -34,14 +43,14 @@ app.use(bodyParser.json());
  * API endpoint to return list of projects
  */
 app.get('/api/getProjectList', (req, res) => {
-  res.sendFile(`${__dirname}/public/projects/settings.json`);
+  res.sendFile(path.join(__dirname, '../public/projects/settings.json'));
 });
 
 /**
  * API endpoint to return list of sources to model images
  */
 app.get('/api/getModelImages', (req, res) => {
-  fs.readdir(`${__dirname}/public/modeling`, (err, items) => {
+  fs.readdir(path.join(__dirname, '../public/modeling'), (err, items) => {
     const result = items.filter(item => isImage(item));
     res.json(result);
   });
@@ -51,7 +60,7 @@ app.get('/api/getModelImages', (req, res) => {
  * API endpoint to return list of sources to photography images
  */
 app.get('/api/getPhotographyImages', (req, res) => {
-  fs.readdir(`${__dirname}/public/photography`, (err, items) => {
+  fs.readdir(path.join(__dirname, '../public/photography'), (err, items) => {
     const result = items.filter(item => isImage(item));
     res.json(result);
   });
@@ -150,7 +159,7 @@ app.post('/api/sendMail', (req, res) => {
  * Fallback for all other accesses
  */
 app.get('*', (req, res) => {
-  res.sendFile(`${__dirname}/client/build/index.html`);
+  res.sendFile(path.join(__dirname, '../client/build/index.html'));
 });
 
 /**
