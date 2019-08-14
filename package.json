@@ -8,7 +8,7 @@
     "start": "node index.js",
     "dev": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "heroku-postbuild": "cd client && yarn install --only=dev && yarn install && yarn build",
+    "heroku-postbuild": "cd client && yarn install --production=false && yarn build",
     "lint": "eslint *.js"
   },
   "repository": {
