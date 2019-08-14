@@ -1,25 +1,29 @@
 /**
  * Node modules
  */
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { ReactNode } from 'react';
 
 /**
  * Styles
  */
 import './HorizontalTable.css';
 
-const propTypes = {
-  children: PropTypes.arrayOf(PropTypes.element).isRequired,
-};
+/**
+ * Types
+ */
+interface Props {
+  children: ReactNode[];
+}
 
-function HorizontalTable(props) {
-  const { children } = props;
+export default function HorizontalTable(props: Props) {
+  const {
+    children,
+  }: Partial<Props> = props;
   return (
     <table className="horizontal-table">
       <tbody>
         <tr>
-          {children.map((child, i) => (
+          {children.map((child: ReactNode, i: number) => (
             // eslint-disable-next-line react/no-array-index-key
             <td key={i}>
               {child}
@@ -30,7 +34,3 @@ function HorizontalTable(props) {
     </table>
   );
 }
-
-HorizontalTable.propTypes = propTypes;
-
-export default HorizontalTable;
