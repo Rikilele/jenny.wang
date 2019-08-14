@@ -8,7 +8,7 @@
     "dev": "ts-node-dev --respawn --transpileOnly src/index.ts",
     "setup": "yarn install && node setup.js && tsc && cd client && yarn install && yarn build",
     "build": "tsc && cd client && yarn install --production=false && yarn build",
-    "lint": "eslint *.js",
+    "lint": "eslint src/* *.js",
     "tsc": "tsc"
   },
   "repository": {
@@ -36,6 +36,8 @@
     "@types/node": "^12.7.1",
     "@types/nodemailer": "^6.2.1",
     "@types/validator": "^10.11.2",
+    "@typescript-eslint/eslint-plugin": "^2.0.0",
+    "@typescript-eslint/parser": "^2.0.0",
     "eslint": "^5.16.0",
     "eslint-config-airbnb-base": "^13.2.0",
     "eslint-plugin-import": "^2.18.2",
