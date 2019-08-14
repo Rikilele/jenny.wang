@@ -1,8 +1,9 @@
 /**
  * Prepares a .env file with default environment variables.
  */
-const fs = require('fs');
-const dotenv = require('dotenv');
+import fs from 'fs';
+import path from 'path';
+import dotenv from 'dotenv';
 
 const portLine = 'PORT=5000\n'; // Port for API server
 const rootLine = 'ROOT_URL=http://google.com\n'; // URL to ping
@@ -14,15 +15,16 @@ const bccLine = 'GMAIL_BCC=example@gmail.com\n'; // BCC Receiver
 
 try {
   console.log('+ Searching for .env file');
+  const pathToEnv = path.join(__dirname, '../.env');
 
   // Check if .env file exists
-  if (fs.existsSync('../.env')) {
+  if (fs.existsSync(pathToEnv)) {
     console.log('+ Found pre-configured .env file');
 
     // Check if all variables are set properly
     console.log('+ Checking variable declarations');
     dotenv.config();
-    const additionalLines = [];
+    const additionalLines: string[] = [];
     if (!process.env.PORT) {
       additionalLines.push(portLine);
     }
@@ -58,7 +60,7 @@ try {
 
     // Declare all additional variables
     } else {
-      const logger = fs.createWriteStream('../.env', { flags: 'a' });
+      const logger = fs.createWriteStream(pathToEnv, { flags: 'a' });
       logger.on('open', () => {
         logger.write(`\n${additionalLines.join('')}`);
         logger.close();
@@ -72,7 +74,7 @@ try {
   } else {
     console.log('+ Could not find .env file');
     console.log('+ Initializing .env file');
-    const logger = fs.createWriteStream('../.env', { flags: 'a' });
+    const logger = fs.createWriteStream(pathToEnv, { flags: 'a' });
     logger.on('open', () => {
       const fullAddition = portLine.concat(
         rootLine,
