@@ -2,7 +2,6 @@
  * Node modules
  */
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { isMobile } from 'react-device-detect';
 
@@ -16,34 +15,33 @@ import MobileNav from '../MobileNav/MobileNav';
  */
 import './Navbar.css';
 
-const propTypes = {
-  tabs: PropTypes.arrayOf(PropTypes.shape({
-    label: PropTypes.string,
-    link: PropTypes.string,
-  })),
-};
+/**
+ * Types
+ */
+import { Tab } from '../../types';
 
-const defaultProps = {
-  tabs: [{
-    label: 'Home',
-    link: '/',
-  }],
-};
+interface Props {
+  tabs: Tab[]
+}
 
-function Navbar(props) {
-  const { tabs } = props;
+/**
+ *  Renders a navbar based on {props.tabs} given.
+ *  Different views on mobile and others.
+ */
+function Navbar(props: Props) {
+  const {
+    tabs,
+  }: Props = props;
   if (isMobile) {
     return (
-      <MobileNav
-        tabs={tabs}
-      />
+      <MobileNav tabs={tabs} />
     );
   }
 
-  const reversedTabs = [...tabs].reverse();
+  const reversedTabs: Tab[] = [...tabs].reverse();
   return (
     <nav className="navbar">
-      {reversedTabs.map((tab) => (
+      {reversedTabs.map((tab: Tab) => (
         <Link
           key={tab.label}
           className="navbar-tab"
@@ -56,7 +54,11 @@ function Navbar(props) {
   );
 }
 
-Navbar.propTypes = propTypes;
-Navbar.defaultProps = defaultProps;
+Navbar.defaultProps = {
+  tabs: [{
+    label: 'Home',
+    link: '/',
+  }],
+};
 
 export default Navbar;
