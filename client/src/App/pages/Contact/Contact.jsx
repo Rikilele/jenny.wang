@@ -72,7 +72,7 @@ export default class Contact extends React.Component {
     this.setState({ validated: newlyValidated });
 
     // Returns whether each input is actually valid
-    return newlyValidated.every(validated => validated);
+    return newlyValidated.every((validated) => validated);
   }
 
   /**
@@ -90,7 +90,7 @@ export default class Contact extends React.Component {
         content,
       }),
     })
-      .then(res => res.json())
+      .then((res) => res.json())
       .then((apiResponse) => {
         if (apiResponse.success) {
           toast.success('Successfully sent!', {

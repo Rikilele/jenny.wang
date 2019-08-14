@@ -31,17 +31,19 @@ const defaultProps = {
 };
 
 function Navbar(props) {
+  const { tabs } = props;
   if (isMobile) {
     return (
-      <MobileNav {...props} />
+      <MobileNav
+        tabs={tabs}
+      />
     );
   }
 
-  const { tabs } = props;
   const reversedTabs = [...tabs].reverse();
   return (
     <nav className="navbar">
-      {reversedTabs.map(tab => (
+      {reversedTabs.map((tab) => (
         <Link
           key={tab.label}
           className="navbar-tab"

@@ -63,7 +63,7 @@ class MobileNav extends React.Component {
           </button>
         </div>
         <nav className={`m-nav-dropdown ${isOpen ? 'm-nav-open' : 'm-nav-closed'}`}>
-          {tabs.map(tab => (
+          {tabs.map((tab) => (
             <Link
               key={tab.label}
               className={`m-nav-tab ${isOpen ? 'm-nav-open' : 'm-nav-closed'}`}

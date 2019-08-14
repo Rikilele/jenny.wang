@@ -22,7 +22,7 @@
   width: 15vw;
   height: 15vw;
   background: radial-gradient(circle at 20% 30%, #ffffff, #000000);
-  transition: transform .3s;
+  transition: transform .2s;
 }
 
 .circle-container-hover {

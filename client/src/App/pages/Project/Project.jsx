@@ -35,8 +35,8 @@ class Project extends React.Component {
   getProject() {
     const { match } = this.props;
     fetch(`/projects/${match.params.id}/${match.params.id}.md`)
-      .then(res => res.text())
-      .then(content => this.setState({ content }));
+      .then((res) => res.text())
+      .then((content) => this.setState({ content }));
   }
 
   render() {

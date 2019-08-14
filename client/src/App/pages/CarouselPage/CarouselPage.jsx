@@ -42,8 +42,8 @@ class CarouselPage extends React.Component {
   getImageSources() {
     const { apiEndpoint } = this.props;
     fetch(apiEndpoint)
-      .then(res => res.json())
-      .then(imageSources => this.setState({ imageSources }));
+      .then((res) => res.json())
+      .then((imageSources) => this.setState({ imageSources }));
   }
 
   render() {
@@ -61,7 +61,7 @@ class CarouselPage extends React.Component {
           transitionTime={300}
           swipeable={false}
         >
-          {imageSources.map(imgSrc => (
+          {imageSources.map((imgSrc) => (
             <div
               key={imgSrc}
               className={isMobile ? 'm-carousel-page-height' : 'carousel-page-height'}

@@ -31,8 +31,8 @@ export default class Projects extends React.Component {
   // Retrieves projects from API endpoint
   getProjects() {
     fetch('/api/getProjectList')
-      .then(res => res.json())
-      .then(projects => this.setState({ projects }));
+      .then((res) => res.json())
+      .then((projects) => this.setState({ projects }));
   }
 
   render() {
@@ -40,7 +40,7 @@ export default class Projects extends React.Component {
     return (
       <AppContainer showNav tabs={routes}>
         <Padding />
-        {projects.map(project => (
+        {projects.map((project) => (
           <Circle
             key={project.id}
             imageSrc={`/projects/${project.id}/${project.id}.jpg`}
