@@ -52,7 +52,7 @@ app.get('/api/getProjectList', (req: Request, res: Response) => {
  */
 app.get('/api/getModelImages', (req: Request, res: Response) => {
   fs.readdir(path.join(__dirname, '../public/modeling'), (err, items) => {
-    const result = items.filter(item => isImage(item));
+    const result: string[] = items.filter(item => isImage(item));
     res.json(result);
   });
 });
@@ -62,7 +62,7 @@ app.get('/api/getModelImages', (req: Request, res: Response) => {
  */
 app.get('/api/getPhotographyImages', (req: Request, res: Response) => {
   fs.readdir(path.join(__dirname, '../public/photography'), (err, items) => {
-    const result = items.filter(item => isImage(item));
+    const result: string[] = items.filter(item => isImage(item));
     res.json(result);
   });
 });
@@ -143,10 +143,10 @@ function sendMail(
   };
 
   transporter.sendMail(mailOptions)
-    .then((info) => {
+    .then(info => {
       console.log(`+ Email sent from ${name}: ${info.response}`);
     })
-    .catch((err) => {
+    .catch(err => {
       console.log(`- Error sending email from ${name}`);
       console.error(err);
     });
@@ -161,6 +161,11 @@ app.post('/api/sendMail', (req: Request, res: Response) => {
     email,
     subject,
     content,
+  }: {
+    name: string;
+    email: string;
+    subject: string;
+    content: string;
   } = req.body;
   const result: ResultObj = validateBody(name, email, subject, content);
 
