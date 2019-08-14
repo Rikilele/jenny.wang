@@ -8,7 +8,7 @@ import http from 'http';
 /**
  * Node modules
  */
-import express, { Request, Response } from 'express';
+import express, { Application, Request, Response } from 'express';
 import bodyParser from 'body-parser';
 import validator from 'validator';
 import isImage from 'is-image';
@@ -19,9 +19,9 @@ import nodemailer, { Transporter, SendMailOptions } from 'nodemailer';
  * Settings
  */
 dotenv.config();
-const app = express();
-const url = process.env.ROOT_URL || 'http://google.com';
-const port = process.env.PORT || 5000;
+const app: Application = express();
+const url: string = process.env.ROOT_URL || 'http://google.com';
+const port: string | number = process.env.PORT || 5000;
 
 /**
  * Ping the website every 20 mins to avoid idle state
@@ -51,8 +51,9 @@ app.get('/api/getProjectList', (req: Request, res: Response) => {
  * API endpoint to return list of sources to model images
  */
 app.get('/api/getModelImages', (req: Request, res: Response) => {
-  fs.readdir(path.join(__dirname, '../public/modeling'), (err, items) => {
-    const result = items.filter(item => isImage(item));
+  const pathToDir: string = path.join(__dirname, '../public/modeling');
+  fs.readdir(pathToDir, (err, items: string[]) => {
+    const result: string[] = items.filter((item: string) => isImage(item));
     res.json(result);
   });
 });
@@ -61,8 +62,9 @@ app.get('/api/getModelImages', (req: Request, res: Response) => {
  * API endpoint to return list of sources to photography images
  */
 app.get('/api/getPhotographyImages', (req: Request, res: Response) => {
-  fs.readdir(path.join(__dirname, '../public/photography'), (err, items) => {
-    const result = items.filter(item => isImage(item));
+  const pathToDir: string = path.join(__dirname, '../public/photography');
+  fs.readdir(pathToDir, (err, items: string[]) => {
+    const result: string[] = items.filter((item: string) => isImage(item));
     res.json(result);
   });
 });
@@ -83,6 +85,7 @@ function validateBody(
   subject: string,
   content: string,
 ): ResultObj {
+  // Set up result object
   const result: ResultObj = {
     success: true,
     errors: [],
@@ -121,10 +124,10 @@ function sendMail(
   content: string,
 ): void {
   // Set up strings
-  const nameLine = `Name: ${name}\n`;
-  const emailLine = `Email: ${email}\n`;
-  const subjectLine = subject ? `Subject: ${subject}\n` : '';
-  const contentLine = `\n${content}`;
+  const nameLine: string = `Name: ${name}\n`;
+  const emailLine: string = `Email: ${email}\n`;
+  const subjectLine: string = subject ? `Subject: ${subject}\n` : '';
+  const contentLine: string = `\n${content}`;
 
   const transporter: Transporter = nodemailer.createTransport({
     service: 'gmail',
@@ -143,10 +146,10 @@ function sendMail(
   };
 
   transporter.sendMail(mailOptions)
-    .then((info) => {
-      console.log(`+ Email sent from ${name}: ${info.response}`);
+    .then(() => {
+      console.log(`+ Email sent from ${name} <${email}>`);
     })
-    .catch((err) => {
+    .catch((err: Error) => {
       console.log(`- Error sending email from ${name}`);
       console.error(err);
     });
@@ -161,6 +164,11 @@ app.post('/api/sendMail', (req: Request, res: Response) => {
     email,
     subject,
     content,
+  }: {
+    name: string,
+    email: string,
+    subject: string,
+    content: string,
   } = req.body;
   const result: ResultObj = validateBody(name, email, subject, content);
 
