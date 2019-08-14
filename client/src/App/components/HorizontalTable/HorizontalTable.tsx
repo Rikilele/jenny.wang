@@ -15,6 +15,10 @@ interface Props {
   children: ReactNode[];
 }
 
+/**
+ * A component to auto-generate horizontal row of cells.
+ * Renders {props.children} horizontally.
+ */
 export default function HorizontalTable(props: Props) {
   const {
     children,

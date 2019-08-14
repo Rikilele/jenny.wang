@@ -14,6 +14,9 @@ import Navbar from '../Navbar/Navbar';
  */
 import './AppContainer.css';
 
+/**
+ * Types
+ */
 interface Tab {
   label: string;
   link: string;
@@ -25,6 +28,10 @@ interface Props {
   tabs?: Tab[];
 }
 
+/**
+ * A wrapper component for the App.
+ * Shows navbar containing {props.tab} on {props.showNav}
+ */
 function AppContainer(props: Props) {
   const {
     children,

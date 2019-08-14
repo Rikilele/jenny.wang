@@ -10,6 +10,9 @@ import { isMobile } from 'react-device-detect';
  */
 import './Circle.css';
 
+/**
+ * Types
+ */
 interface Props {
   imageSrc: string;
   link: string | null;
@@ -21,7 +24,12 @@ interface State {
   hovered: boolean;
 }
 
-class Circle extends React.Component<Props, State> {
+/**
+ * Circle component for the App.
+ * Displays an interactive circle with an image, title, and description.
+ * Can be made a link depending on {props.link}: string | null
+ */
+export default class Circle extends React.Component<Props, State> {
 
   static defaultProps = {
     title: '',
@@ -43,6 +51,9 @@ class Circle extends React.Component<Props, State> {
     this.setState({ hovered: false });
   }
 
+  /**
+   * Renders a circle for mobile view
+   */
   renderMobileCircle() {
     const {
       imageSrc,
@@ -64,6 +75,9 @@ class Circle extends React.Component<Props, State> {
     );
   }
 
+  /**
+   * Renders a circle for normal browser view
+   */
   renderBrowserCircle() {
     const {
       imageSrc,
@@ -72,7 +86,7 @@ class Circle extends React.Component<Props, State> {
     }: Partial<Props> = this.props;
     const {
       hovered,
-    }: State = this.state;
+    }: Partial<State> = this.state;
     return (
       <div
         className={`circle-container ${hovered ? 'circle-container-hover' : ''}`}
@@ -125,5 +139,3 @@ class Circle extends React.Component<Props, State> {
     );
   }
 }
-
-export default Circle;
