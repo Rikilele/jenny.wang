@@ -8,12 +8,12 @@ import http from 'http';
 /**
  * Node modules
  */
-import express, { Request, Response } from 'express';
+import express from 'express';
 import bodyParser from 'body-parser';
 import validator from 'validator';
 import isImage from 'is-image';
 import dotenv from 'dotenv';
-import nodemailer, { Transporter, SendMailOptions } from 'nodemailer';
+import nodemailer from 'nodemailer';
 
 /**
  * Settings
@@ -43,14 +43,14 @@ app.use(bodyParser.json());
 /**
  * API endpoint to return list of projects
  */
-app.get('/api/getProjectList', (req: Request, res: Response) => {
+app.get('/api/getProjectList', (req: express.Request, res: express.Response) => {
   res.sendFile(path.join(__dirname, '../public/projects/settings.json'));
 });
 
 /**
  * API endpoint to return list of sources to model images
  */
-app.get('/api/getModelImages', (req: Request, res: Response) => {
+app.get('/api/getModelImages', (req: express.Request, res: express.Response) => {
   fs.readdir(path.join(__dirname, '../public/modeling'), (err, items) => {
     const result: string[] = items.filter(item => isImage(item));
     res.json(result);
@@ -60,7 +60,7 @@ app.get('/api/getModelImages', (req: Request, res: Response) => {
 /**
  * API endpoint to return list of sources to photography images
  */
-app.get('/api/getPhotographyImages', (req: Request, res: Response) => {
+app.get('/api/getPhotographyImages', (req: express.Request, res: express.Response) => {
   fs.readdir(path.join(__dirname, '../public/photography'), (err, items) => {
     const result: string[] = items.filter(item => isImage(item));
     res.json(result);
@@ -81,7 +81,7 @@ function validateBody(
   name: string,
   email: string,
   subject: string,
-  content: string
+  content: string,
 ): ResultObj {
   const result: ResultObj = {
     success: true,
@@ -118,7 +118,7 @@ function sendMail(
   name: string,
   email: string,
   subject: string,
-  content: string
+  content: string,
 ): void {
   // Set up strings
   const nameLine: string = `Name: ${name}\n`;
@@ -126,7 +126,7 @@ function sendMail(
   const subjectLine: string = subject ? `Subject: ${subject}\n` : '';
   const contentLine: string = `\n${content}`;
 
-  const transporter: Transporter = nodemailer.createTransport({
+  const transporter: nodemailer.Transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
       user: process.env.GMAIL_USER,
@@ -134,7 +134,7 @@ function sendMail(
     },
   });
 
-  const mailOptions: SendMailOptions = {
+  const mailOptions: nodemailer.SendMailOptions = {
     from: process.env.GMAIL_FROM,
     to: process.env.GMAIL_TO,
     bcc: process.env.GMAIL_BCC,
@@ -143,10 +143,10 @@ function sendMail(
   };
 
   transporter.sendMail(mailOptions)
-    .then(info => {
+    .then((info) => {
       console.log(`+ Email sent from ${name}: ${info.response}`);
     })
-    .catch(err => {
+    .catch((err) => {
       console.log(`- Error sending email from ${name}`);
       console.error(err);
     });
@@ -155,7 +155,7 @@ function sendMail(
 /**
  * API endpoint to send email to Jenny
  */
-app.post('/api/sendMail', (req: Request, res: Response) => {
+app.post('/api/sendMail', (req: express.Request, res: express.Response) => {
   const {
     name,
     email,
@@ -180,7 +180,7 @@ app.post('/api/sendMail', (req: Request, res: Response) => {
 /**
  * Fallback for all other accesses
  */
-app.get('*', (req: Request, res: Response) => {
+app.get('*', (req: express.Request, res: express.Response) => {
   res.sendFile(path.join(__dirname, '../client/build/index.html'));
 });
 
