@@ -8,19 +8,20 @@ import http from 'http';
 /**
  * Node modules
  */
-import express from 'express';
+import express, { Request, Response } from 'express';
 import bodyParser from 'body-parser';
 import validator from 'validator';
 import isImage from 'is-image';
 import dotenv from 'dotenv';
-import nodemailer from 'nodemailer';
+import nodemailer, { Transporter, SendMailOptions } from 'nodemailer';
 
 /**
  * Settings
  */
 dotenv.config();
 const app = express();
-const port = process.env.PORT;
+const url = process.env.ROOT_URL || 'http://google.com';
+const port = process.env.PORT || 5000;
 
 /**
  * Ping the website every 20 mins to avoid idle state
@@ -28,7 +29,7 @@ const port = process.env.PORT;
  *   https://devcenter.heroku.com/articles/free-dyno-hours
  */
 setInterval(() => {
-  http.get(process.env.ROOT_URL);
+  http.get(url);
 }, 20 * 60 * 1000);
 
 /**
@@ -42,14 +43,14 @@ app.use(bodyParser.json());
 /**
  * API endpoint to return list of projects
  */
-app.get('/api/getProjectList', (req, res) => {
+app.get('/api/getProjectList', (req: Request, res: Response) => {
   res.sendFile(path.join(__dirname, '../public/projects/settings.json'));
 });
 
 /**
  * API endpoint to return list of sources to model images
  */
-app.get('/api/getModelImages', (req, res) => {
+app.get('/api/getModelImages', (req: Request, res: Response) => {
   fs.readdir(path.join(__dirname, '../public/modeling'), (err, items) => {
     const result = items.filter(item => isImage(item));
     res.json(result);
@@ -59,7 +60,7 @@ app.get('/api/getModelImages', (req, res) => {
 /**
  * API endpoint to return list of sources to photography images
  */
-app.get('/api/getPhotographyImages', (req, res) => {
+app.get('/api/getPhotographyImages', (req: Request, res: Response) => {
   fs.readdir(path.join(__dirname, '../public/photography'), (err, items) => {
     const result = items.filter(item => isImage(item));
     res.json(result);
@@ -67,14 +68,22 @@ app.get('/api/getPhotographyImages', (req, res) => {
 });
 
 /**
- * Function that validates a post request body in an object as follows:
- * {
- *   success: boolean,
- *   errors: string[]
- * }
+ * Function that validates a post request body in a ResultObj.
+ * ResultObj.success defines whether all validations have passed.
+ * ResultObj.errors stores any error messages.
  */
-function validateBody(name: string, email: string, subject: string, content: string) {
-  const result = {
+interface ResultObj {
+  success: boolean;
+  errors: string[];
+}
+
+function validateBody(
+  name: string,
+  email: string,
+  subject: string,
+  content: string
+): ResultObj {
+  const result: ResultObj = {
     success: true,
     errors: [],
   };
@@ -102,14 +111,22 @@ function validateBody(name: string, email: string, subject: string, content: str
   return result;
 }
 
-function sendMail(name, email, subject, content) {
+/**
+ * Sends an email using nodemailer.
+ */
+function sendMail(
+  name: string,
+  email: string,
+  subject: string,
+  content: string
+): void {
   // Set up strings
-  const nameLine = `Name: ${name}\n`;
-  const emailLine = `Email: ${email}\n`;
-  const subjectLine = subject ? `Subject: ${subject}\n` : '';
-  const contentLine = `\n${content}`;
+  const nameLine: string = `Name: ${name}\n`;
+  const emailLine: string = `Email: ${email}\n`;
+  const subjectLine: string = subject ? `Subject: ${subject}\n` : '';
+  const contentLine: string = `\n${content}`;
 
-  const transporter = nodemailer.createTransport({
+  const transporter: Transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
       user: process.env.GMAIL_USER,
@@ -117,7 +134,7 @@ function sendMail(name, email, subject, content) {
     },
   });
 
-  const mailOptions = {
+  const mailOptions: SendMailOptions = {
     from: process.env.GMAIL_FROM,
     to: process.env.GMAIL_TO,
     bcc: process.env.GMAIL_BCC,
@@ -138,14 +155,14 @@ function sendMail(name, email, subject, content) {
 /**
  * API endpoint to send email to Jenny
  */
-app.post('/api/sendMail', (req, res) => {
+app.post('/api/sendMail', (req: Request, res: Response) => {
   const {
     name,
     email,
     subject,
     content,
   } = req.body;
-  const result = validateBody(name, email, subject, content);
+  const result: ResultObj = validateBody(name, email, subject, content);
 
   // Send email only if validate succeeds
   if (result.success) {
@@ -158,7 +175,7 @@ app.post('/api/sendMail', (req, res) => {
 /**
  * Fallback for all other accesses
  */
-app.get('*', (req, res) => {
+app.get('*', (req: Request, res: Response) => {
   res.sendFile(path.join(__dirname, '../client/build/index.html'));
 });
 
