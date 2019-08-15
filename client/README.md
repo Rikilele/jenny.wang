@@ -1,44 +1,74 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Personal TSX Style Guide() {
 
-## Available Scripts
+## Interfacing Props and State
 
-In the project directory, you can run:
+Declare interfaces for props and states after all imports as follows:
 
-### `npm start`
+```typescript
+/**
+ * Types
+ */
+import { customType } from 'path/to/types';
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+interface Props {
+  // Declare types for each prop
+}
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+interface State {
+  // Declare types for each state
+}
+```
 
-### `npm test`
+## Object Destructuring
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### `class` components
 
-### `npm run build`
+When using object destructuring to assign content of `props` and `state` to variables, declare type as follows:
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```typescript
+class SampleComponent extends React.Component<Props, State> {
+  someFunction() {
+    const {
+      // List props to use
+    }: Partial<Props> = this.props;
+    const {
+      // List states to use
+    }: Partial<State> = this.state;
+    // ...
+  }
+}
+```
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+This is because `Partial<T>` allows props and states to be missing in the destructuring.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Even if all props or states are present in the destructuring, `Partial<T>` should be used for scalability.
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### `function` components
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+When using object destructuring to assign `props`, declare type as follows:
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```typescript
+function SampleComponent(props: Props) {
+  const {
+    // List all props
+  }: Props = props;
+  // ...
+}
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+This is because all props must be assigned to a variable in a function component.
 
-## Learn More
+If not, the prop should be excluded from `Props` because it is unused.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Assigning to single variable
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+When using object destructuring to assign to only one variable, use only a single line.
+
+```typescript
+const { a }: Props = props;
+```
+
+Readability comes first imo if no big difference in functionality.
+
+# };
