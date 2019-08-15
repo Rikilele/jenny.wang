@@ -3,7 +3,6 @@
  */
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
-import PropTypes from 'prop-types';
 
 /**
  * Custom components
@@ -15,16 +14,30 @@ import AppContainer from '../../components/AppContainer/AppContainer';
  */
 import routes from '../routes.json';
 
-const propTypes = {
-  // eslint-disable-next-line react/forbid-prop-types
-  match: PropTypes.object.isRequired,
-};
+/**
+ * Types
+ */
+import { RouteComponentProps } from "react-router";
 
-class Project extends React.Component {
-  constructor(props) {
+interface MatchParams {
+  id: string;
+}
+
+interface Props extends RouteComponentProps<MatchParams> {}
+
+interface State {
+  content: string;
+}
+
+/**
+ * Layout for a project.
+ * Will display contents of fetched markdown.
+ */
+export default class Project extends React.Component<Props, State> {
+  constructor(props: Props) {
     super(props);
     this.state = {
-      content: null,
+      content: '',
     };
   }
 
@@ -33,14 +46,14 @@ class Project extends React.Component {
   }
 
   getProject() {
-    const { match } = this.props;
+    const { match }: Partial<Props> = this.props;
     fetch(`/projects/${match.params.id}/${match.params.id}.md`)
       .then((res) => res.text())
-      .then((content) => this.setState({ content }));
+      .then((content: string) => this.setState({ content }));
   }
 
   render() {
-    const { content } = this.state;
+    const { content }: Partial<State> = this.state;
     return (
       <AppContainer showNav tabs={routes}>
         <ReactMarkdown source={content} />
@@ -48,7 +61,3 @@ class Project extends React.Component {
     );
   }
 }
-
-Project.propTypes = propTypes;
-
-export default Project;
