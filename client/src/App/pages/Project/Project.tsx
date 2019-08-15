@@ -2,6 +2,7 @@
  * Node modules
  */
 import React from 'react';
+import { RouteComponentProps } from 'react-router';
 import ReactMarkdown from 'react-markdown';
 
 /**
@@ -17,8 +18,6 @@ import routes from '../routes.json';
 /**
  * Types
  */
-import { RouteComponentProps } from "react-router";
-
 interface MatchParams {
   id: string;
 }
