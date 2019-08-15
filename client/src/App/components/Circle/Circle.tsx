@@ -78,9 +78,7 @@ class Circle extends React.Component<Props, State> {
       title,
       description,
     }: Partial<Props> = this.props;
-    const {
-      hovered,
-    }: Partial<State> = this.state;
+    const { hovered }: Partial<State> = this.state;
     return (
       <div
         className={`circle-container ${hovered ? 'circle-container-hover' : ''}`}
@@ -103,9 +101,7 @@ class Circle extends React.Component<Props, State> {
   }
 
   render() {
-    const {
-      link,
-    }: Partial<Props> = this.props;
+    const { link }: Partial<Props> = this.props;
 
     // Mobile will show title and description as default
     if (isMobile && !link) {

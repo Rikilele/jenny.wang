@@ -20,9 +20,7 @@ interface Props {
  * Renders {props.children} horizontally.
  */
 export default function HorizontalTable(props: Props) {
-  const {
-    children,
-  }: Props = props;
+  const { children }: Props = props;
   return (
     <table className="horizontal-table">
       <tbody>

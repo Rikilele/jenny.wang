@@ -29,9 +29,7 @@ interface Props {
  *  Different views on mobile and others.
  */
 function Navbar(props: Props) {
-  const {
-    tabs,
-  }: Props = props;
+  const { tabs }: Props = props;
   if (isMobile) {
     return (
       <MobileNav tabs={tabs} />
