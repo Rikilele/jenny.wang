@@ -2,7 +2,6 @@
  * Node modules
  */
 import React from 'react';
-import PropTypes from 'prop-types';
 import { isMobile } from 'react-device-detect';
 import { Carousel } from 'react-responsive-carousel';
 
@@ -22,13 +21,24 @@ import './CarouselPage.css';
  */
 import routes from '../routes.json';
 
-const propTypes = {
-  apiEndpoint: PropTypes.string.isRequired,
-  publicRoute: PropTypes.string.isRequired,
-};
+/**
+ * Types
+ */
+interface Props {
+  apiEndpoint: string;
+  publicRoute: string;
+}
 
-class CarouselPage extends React.Component {
-  constructor(props) {
+interface State {
+  imageSources: string[];
+}
+
+/**
+ * Layout for a page containing a carousel.
+ * Assumes that api is built so images can be retrieved at a public route.
+ */
+export default class CarouselPage extends React.Component<Props, State> {
+  constructor(props: Props) {
     super(props);
     this.state = {
       imageSources: [],
@@ -39,16 +49,16 @@ class CarouselPage extends React.Component {
     this.getImageSources();
   }
 
-  getImageSources() {
-    const { apiEndpoint } = this.props;
+  getImageSources(): void {
+    const { apiEndpoint }: Partial<Props> = this.props;
     fetch(apiEndpoint)
       .then((res) => res.json())
-      .then((imageSources) => this.setState({ imageSources }));
+      .then((imageSources: string[]) => this.setState({ imageSources }));
   }
 
   render() {
-    const { publicRoute } = this.props;
-    const { imageSources } = this.state;
+    const { publicRoute }: Partial<Props> = this.props;
+    const { imageSources }: Partial<State> = this.state;
     return (
       <div>
         <Navbar tabs={routes} />
@@ -61,7 +71,7 @@ class CarouselPage extends React.Component {
           transitionTime={300}
           swipeable={false}
         >
-          {imageSources.map((imgSrc) => (
+          {imageSources.map((imgSrc: string) => (
             <div
               key={imgSrc}
               className={isMobile ? 'm-carousel-page-height' : 'carousel-page-height'}
@@ -78,7 +88,3 @@ class CarouselPage extends React.Component {
     );
   }
 }
-
-CarouselPage.propTypes = propTypes;
-
-export default CarouselPage;
