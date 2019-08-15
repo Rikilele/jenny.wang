@@ -27,6 +27,11 @@ interface State {
   isOpen: boolean;
 }
 
+/**
+ * Renders a navbar for mobile.
+ * Bar with menu icon shows on top.
+ * When clicked, tabs show up underneath.
+ */
 class MobileNav extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
