@@ -1,8 +1,7 @@
 /**
  * Node modules
  */
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { MouseEvent } from 'react';
 import { Link } from 'react-router-dom';
 
 /**
@@ -15,36 +14,35 @@ import menu from './menu.png';
  */
 import './MobileNav.css';
 
-const propTypes = {
-  tabs: PropTypes.arrayOf(PropTypes.shape({
-    label: PropTypes.string,
-    link: PropTypes.string,
-  })),
-};
+/**
+ * Types
+ */
+import { Tab } from '../../types';
 
-const defaultProps = {
-  tabs: [{
-    label: 'Home',
-    link: '/',
-  }],
-};
+interface Props {
+  tabs: Tab[];
+}
 
-class MobileNav extends React.Component {
-  constructor(props) {
+interface State {
+  isOpen: boolean;
+}
+
+class MobileNav extends React.Component<Props, State> {
+  constructor(props: Props) {
     super(props);
     this.state = { isOpen: false };
     this.handleClick = this.handleClick.bind(this);
   }
 
-  handleClick(e) {
+  handleClick(e: MouseEvent) {
     e.preventDefault();
-    const { isOpen } = this.state;
+    const { isOpen }: Partial<State> = this.state;
     this.setState({ isOpen: !isOpen });
   }
 
   render() {
-    const { tabs } = this.props;
-    const { isOpen } = this.state;
+    const { tabs }: Partial<Props> = this.props;
+    const { isOpen }: Partial<State> = this.state;
     return (
       <div>
         <div
@@ -63,7 +61,7 @@ class MobileNav extends React.Component {
           </button>
         </div>
         <nav className={`m-nav-dropdown ${isOpen ? 'm-nav-open' : 'm-nav-closed'}`}>
-          {tabs.map((tab) => (
+          {tabs.map((tab: Tab) => (
             <Link
               key={tab.label}
               className={`m-nav-tab ${isOpen ? 'm-nav-open' : 'm-nav-closed'}`}
@@ -78,7 +76,12 @@ class MobileNav extends React.Component {
   }
 }
 
-MobileNav.propTypes = propTypes;
-MobileNav.defaultProps = defaultProps;
+// @ts-ignore
+MobileNav.defaultProps = {
+  tabs: [{
+    label: 'Home',
+    link: '/',
+  }],
+};
 
 export default MobileNav;
