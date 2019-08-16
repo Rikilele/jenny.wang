@@ -15,8 +15,24 @@ import Padding from '../../components/Padding/Padding';
  */
 import routes from '../routes.json';
 
-export default class Projects extends React.Component {
-  constructor(props) {
+/**
+ * Types
+ */
+interface Project {
+  id: number;
+  title: string;
+  description: string;
+}
+
+interface State {
+  projects: Project[];
+}
+
+/**
+ * Lists all projects
+ */
+export default class Projects extends React.Component<{}, State> {
+  constructor(props: {}) {
     super(props);
     this.state = {
       projects: [],
@@ -32,15 +48,15 @@ export default class Projects extends React.Component {
   getProjects() {
     fetch('/api/getProjectList')
       .then((res) => res.json())
-      .then((projects) => this.setState({ projects }));
+      .then((projects: Project[]) => this.setState({ projects }));
   }
 
   render() {
-    const { projects } = this.state;
+    const { projects }: Partial<State> = this.state;
     return (
       <AppContainer showNav tabs={routes}>
         <Padding />
-        {projects.map((project) => (
+        {projects.map((project: Project) => (
           <Circle
             key={project.id}
             imageSrc={`/projects/${project.id}/${project.id}.jpg`}
