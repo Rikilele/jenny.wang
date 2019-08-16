@@ -16,7 +16,7 @@ jobs:
       - run:
           name: Install yarn
           command:
-            npm install -g yarn@1.17.3
+            sudo npm install -g yarn@1.17.3
 
       - run:
           name: Check version
