@@ -6,7 +6,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/node:7.10
+      - image: circleci/node:10.15.0
 
     working_directory: ~/repo
 
@@ -14,19 +14,8 @@ jobs:
       - checkout
 
       - run:
-          name: Setup node, npm, and yarn
-          command: |
-            # Install NVM
-            curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
-            echo 'export NVM_DIR="/opt/circleci/.nvm"' >> $BASH_ENV
-            echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> $BASH_ENV
-            source $BASH_ENV
-
-            # Install node
-            nvm install v10.15.0
-            nvm alias default v10.15.0
-
-            # Install yarn
+          name: Install yarn
+          command:
             npm install -g yarn@1.17.3
 
       - run:
