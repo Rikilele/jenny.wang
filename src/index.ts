@@ -87,7 +87,7 @@ function validateBody(
 ): ResultObj {
   // Set up result object
   const result: ResultObj = {
-    success: true,
+    success: false,
     errors: [],
   };
 
@@ -107,8 +107,8 @@ function validateBody(
     result.errors.push('Content was invalid');
   }
 
-  if (result.errors.length > 0) {
-    result.success = false;
+  if (result.errors.length === 0) {
+    result.success = true;
   }
 
   return result;
