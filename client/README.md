@@ -17,34 +17,34 @@
   1. Styles
   1. Types
 
-   ```TSX
-   /**
-    * Node modules
-    */
-   import React from 'react';
-   
-   /**
-    * Custom components
-    */
-   import CustomComponent from 'path/to/CustomComponent';
-   
-   /**
-    * Assets
-    */
-   import someIcon from './someIcon.png';
-   
-   /**
-    * Styles
-    */
-   import 'styles.css';
-   
-   /**
-    * Types
-    */
-   interface CustomType {
-     // ...
-   }
-   ```
+     ```tsx
+     /**
+      * Node modules
+      */
+     import React from 'react';
+     
+     /**
+      * Custom components
+      */
+     import CustomComponent from 'path/to/CustomComponent';
+     
+     /**
+      * Assets
+      */
+     import someIcon from './someIcon.png';
+     
+     /**
+      * Styles
+      */
+     import 'styles.css';
+     
+     /**
+      * Types
+      */
+     interface CustomType {
+       // ...
+     }
+     ```
 
 **[⬆ back to top](#table-of-contents)**
 
@@ -52,22 +52,22 @@
 
   - Import types alongside regular node module imports when available.
 
-   ```TSX
-   /**
+    ```tsx
+    /**
     * Node modules
     */
-   import express, { Request, Response } from 'express';
-   ```
+    import express, { Request, Response } from 'express';
+    ```
    
   - Import custom types after all other imports.
 
-   ```TSX
-   
-   /**
+    ```tsx
+    
+    /**
     * Types
     */
-   import { CustomType } from 'path/to/types';
-   ```
+    import { CustomType } from 'path/to/types';
+    ```
 
 **[⬆ back to top](#table-of-contents)**
 
@@ -75,24 +75,24 @@
 
   - Declare interfaces for props and state after all imports and right before the react component.
 
-   ```TSX
-   // ...
-   
-   interface Props {
+    ```tsx
+    // ...
+    
+    interface Props {
      // ...
-   }
-
-   interface State {
+    }
+    
+    interface State {
      // ...
-   }
-   
-   /**
+    }
+    
+    /**
     * Component
     */
-   class CustomComponent extends React.Component<Props, State> {
+    class CustomComponent extends React.Component<Props, State> {
      // ...
-   }
-   ```
+    }
+    ```
 
 **[⬆ back to top](#table-of-contents)**
 
@@ -103,42 +103,41 @@
     > Why? `Partial<T>` allows props and states to be missing in the destructuring.
     > Even if all props or states are present in the destructuring, `Partial<T>` should be used for scalability.
 
-  ```TSX
-  class SampleComponent extends React.Component<Props, State> {
-    someFunction() {
-      const {
-        // List props to use
-      }: Partial<Props> = this.props;
-      const {
-        // List states to use
-      }: Partial<State> = this.state;
-      // ...
+    ```tsx
+    class SampleComponent extends React.Component<Props, State> {
+      someFunction() {
+        const {
+          // List props to use
+        }: Partial<Props> = this.props;
+        const {
+          // List states to use
+        }: Partial<State> = this.state;
+        // ...
+      }
     }
-  }
-  ```
+    ```
 
   - When using object destructuring to assign `props`, declare type as follows:
   
     > Why? All props must be assigned to a variable in a function component.
     > If not, the prop should be excluded from `Props` because it is unused.
-
   
-  ```TSX
-  function SampleComponent(props: Props) {
-    const {
-      // List all props
-    }: Props = props;
-    // ...
-  }
-  ```
+    ```tsx
+    function SampleComponent(props: Props) {
+      const {
+        // List all props
+      }: Props = props;
+      // ...
+    }
+    ```
 
   - When using object destructuring to assign to only one variable, use only a single line.
 
     > Why? Readability comes first imo if no big difference in functionality.
 
-  ```TSX
-  const { a }: Props = props;
-  ```
+    ```tsx
+    const { a }: Props = props;
+    ```
 
 **[⬆ back to top](#table-of-contents)**
 
