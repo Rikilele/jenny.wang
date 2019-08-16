@@ -14,16 +14,32 @@ jobs:
       - checkout
 
       - run:
-          name: Check version
-          command: |
-            node -v
-            npm -v
-            yarn -v
+        name: Setup node, npm, and yarn
+        command: |
+          # Install NVM
+          curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
+          echo 'export NVM_DIR="/opt/circleci/.nvm"' >> $BASH_ENV
+          echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> $BASH_ENV
+          source $BASH_ENV
+
+          # Install node
+          nvm install v10.15.0
+          nvm alias default v10.15.0
+
+          # Install yarn
+          npm install -g yarn@1.17.3
 
       - run:
-          name: Setup
-          command: yarn setup
+        name: Check version
+        command: |
+          node -v
+          npm -v
+          yarn -v
 
       - run:
-          name: Build
-          command: yarn build
+        name: Setup
+        command: yarn setup
+
+      - run:
+        name: Build
+        command: yarn build
