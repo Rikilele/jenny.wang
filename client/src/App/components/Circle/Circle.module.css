@@ -1,4 +1,4 @@
-.circle {
+.image {
   display: inline-block;
   position: relative;
   border-radius: 50%;
@@ -8,11 +8,11 @@
   opacity: 0.6;
 }
 
-.circle-hover {
+.image_hover {
   filter: blur(2px);
 }
 
-.circle-container {
+.container {
   text-align: center;
   display: inline-block;
   position: relative;
@@ -25,12 +25,12 @@
   transition: transform .2s;
 }
 
-.circle-container-hover {
+.container_hover {
   background: radial-gradient(circle at 20% 30%, #222222, #000000);
   transform: scale(1.05);
 }
 
-.circle-layover {
+.layover {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -38,19 +38,19 @@
   width: 100%;
 }
 
-.circle-title {
+.title {
   font-family: 'Open Sans', sans-serif;
   font-size: calc(12px + 2vmin);
   color: #ffffff;
 }
 
-.circle-description {
+.description {
   font-family: 'Open Sans', sans-serif;
   font-size: calc(1vmin);
   color: #ffffff;
 }
 
-.m-circle {
+.m_image {
   display: inline-block;
   position: relative;
   border-radius: 50%;
@@ -61,7 +61,7 @@
   filter: blur(1px);
 }
 
-.m-circle-container {
+.m_container {
   text-align: center;
   display: inline-block;
   position: relative;
@@ -73,7 +73,7 @@
   background: #000000;
 }
 
-.m-circle-layover {
+.m_layover {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -81,13 +81,13 @@
   width: 100%;
 }
 
-.m-circle-title {
+.m_title {
   font-family: 'Open Sans', sans-serif;
   font-size: 24px;
   color: #ffffff;
 }
 
-.m-circle-description {
+.m_description {
   font-family: 'Open Sans', sans-serif;
   font-size: 12px;
   color: #ffffff;

@@ -6,7 +6,7 @@ import React, { ReactNode } from 'react';
 /**
  * Styles
  */
-import './InputWrapper.css';
+import styles from './InputWrapper.module.css';
 
 /**
  * Types
@@ -29,12 +29,12 @@ function InputWrapper(props: Props) {
     errorMessage,
   }: Props = props;
   return (
-    <div className="input-wrapper">
+    <div className={styles.wrapper}>
       <p>
         {label}
-        {required && <span className="input-required">(Required)</span>}
+        {required && <span className={styles.required}>(Required)</span>}
       </p>
-      {errorMessage && <p className="input-error">{errorMessage}</p>}
+      {errorMessage && <p className={styles.error}>{errorMessage}</p>}
       {children}
     </div>
   );

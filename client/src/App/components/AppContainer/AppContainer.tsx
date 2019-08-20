@@ -12,7 +12,7 @@ import Navbar from '../Navbar/Navbar';
 /**
  * Styles
  */
-import './AppContainer.css';
+import styles from './AppContainer.module.css';
 
 /**
  * Types
@@ -40,7 +40,7 @@ function AppContainer(props: Props) {
       {showNav && (
         <Navbar tabs={tabs} />
       )}
-      <div className={isMobile ? 'm-app-container' : 'app-container'}>
+      <div className={isMobile ? styles.m_container : styles.container}>
         {children}
       </div>
     </div>

@@ -6,7 +6,7 @@
   padding-bottom: 1vh;
 }
 
-.navbar-tab {
+.tab {
   color: #000000;
   line-height: 1rem;
   height: 1rem;
@@ -15,6 +15,6 @@
   text-decoration: none;
 }
 
-.navbar-tab:hover {
+.tab:hover {
   background: #eeeeee;
 }

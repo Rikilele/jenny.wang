@@ -1,15 +1,15 @@
-.input-wrapper {
+.wrapper {
   font-family: 'Open Sans', sans-serif;
   text-align: left;
 }
 
-.input-required {
+.required {
   color: #ff9999;
   margin-left: 5px;
   font-size: 11px;
 }
 
-.input-error {
+.error {
   color: #c00000;
   font-size: 11px;
 }

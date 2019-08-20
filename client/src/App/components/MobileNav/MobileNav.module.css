@@ -1,10 +1,10 @@
-.m-nav {
+.nav {
   padding: 0.8rem 2rem;
   border-top: 1px solid #eeeeee;
   border-bottom: 1px solid #aaaaaa;
 }
 
-.m-button {
+.button {
   padding: 0;
   height: 2.4rem;
   border: none;
@@ -12,16 +12,16 @@
   margin-left: 75vw;
 }
 
-.m-nav-icon {
+.icon {
   height: 88%;
 }
 
-.m-nav-dropdown {
+.dropdown {
   text-align: center;
   transition: display 0.2s ease-out;
 }
 
-.m-nav-tab {
+.tab {
   display: block;
   color: #000000;
   line-height: 1rem;
@@ -32,12 +32,12 @@
   transition: display 0.2s ease-out;
 }
 
-.m-nav-open {
+.open {
   display: block;
   animation: show 0.3s linear 0s;
 }
 
-.m-nav-closed {
+.closed {
   display: none;
 }
 
