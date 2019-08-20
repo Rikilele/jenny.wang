@@ -13,7 +13,7 @@ import MobileNav from '../MobileNav/MobileNav';
 /**
  * Styles
  */
-import './Navbar.css';
+import styles from './Navbar.module.css';
 
 /**
  * Types
@@ -38,11 +38,11 @@ function Navbar(props: Props) {
 
   const reversedTabs: Tab[] = [...tabs].reverse();
   return (
-    <nav className="navbar">
+    <nav className={styles.navbar}>
       {reversedTabs.map((tab: Tab) => (
         <Link
           key={tab.label}
-          className="navbar-tab"
+          className={styles.tab}
           to={tab.link}
         >
           {tab.label}

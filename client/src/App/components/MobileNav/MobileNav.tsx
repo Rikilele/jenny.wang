@@ -12,7 +12,7 @@ import menu from './menu.png';
 /**
  * Styles
  */
-import './MobileNav.css';
+import styles from './MobileNav.module.css';
 
 /**
  * Types
@@ -51,25 +51,25 @@ class MobileNav extends React.Component<Props, State> {
     return (
       <div>
         <div
-          className="m-nav"
+          className={styles.nav}
         >
           <button
-            className="m-button"
+            className={styles.button}
             type="button"
             onClick={this.handleClick}
           >
             <img
-              className="m-nav-icon"
+              className={styles.icon}
               src={menu}
               alt="menu"
             />
           </button>
         </div>
-        <nav className={`m-nav-dropdown ${isOpen ? 'm-nav-open' : 'm-nav-closed'}`}>
+        <nav className={`${styles.dropdown} ${isOpen ? styles.open : styles.closed}`}>
           {tabs.map((tab: Tab) => (
             <Link
               key={tab.label}
-              className={`m-nav-tab ${isOpen ? 'm-nav-open' : 'm-nav-closed'}`}
+              className={`${styles.tab} ${isOpen ? styles.open : styles.closed}`}
               to={tab.link}
             >
               {tab.label}

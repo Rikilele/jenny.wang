@@ -6,7 +6,7 @@ import React, { ReactNode } from 'react';
 /**
  * Styles
  */
-import './HorizontalTable.css';
+import styles from './HorizontalTable.module.css';
 
 /**
  * Types
@@ -22,7 +22,7 @@ interface Props {
 export default function HorizontalTable(props: Props) {
   const { children }: Props = props;
   return (
-    <table className="horizontal-table">
+    <table className={styles.horizontal_table}>
       <tbody>
         <tr>
           {children.map((child: ReactNode, i: number) => (
