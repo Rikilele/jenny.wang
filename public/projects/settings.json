@@ -1,17 +1,17 @@
 [
   {
     "id": 1,
-    "title": "Inner Peace",
-    "description": "Inspired by words"
+    "title": "Demo 1",
+    "description": "Placeholder 1"
   },
   {
     "id": 2,
-    "title": "Deception",
-    "description": "Inspired by absence"
+    "title": "Demo 2",
+    "description": "Placeholder 2"
   },
   {
     "id": 3,
-    "title": "Snow",
-    "description": "Inspired by calmness"
+    "title": "Demo 3",
+    "description": "Placeholder 3"
   }
 ]
