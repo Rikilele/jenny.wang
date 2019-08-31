@@ -16,7 +16,7 @@ import Padding from '../../components/Padding/Padding';
  */
 import archieImg from './archie.jpg';
 import modelImg from './model.jpg';
-import towerImg from './tower.jpg';
+import photographyImg from './photography.jpg';
 
 /**
  * Styles
@@ -45,9 +45,9 @@ export default function Home() {
         link="/projects"
       />
       <Circle
-        imageSrc={towerImg}
+        imageSrc={photographyImg}
         title="Photography"
-        description="Coming Soon"
+        description="Taken by Jenny"
         link="/photography"
       />
       <Circle
