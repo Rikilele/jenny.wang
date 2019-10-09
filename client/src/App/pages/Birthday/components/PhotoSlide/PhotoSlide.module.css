@@ -1,0 +1,22 @@
+.invisible {
+  display: none;
+}
+
+.shown {
+  color: black;
+}
+
+.photo {
+  max-width: 76vw;
+  max-height: 60vh;
+}
+
+.caption {
+  font-size: 1.2rem;
+  margin-top: 8px;
+  margin-bottom: 0;
+}
+
+.landscape {
+  padding-top: 12vh;
+}

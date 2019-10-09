@@ -13,6 +13,7 @@ import Project from './pages/Project/Project';
 import Photography from './pages/Photography/Photography';
 import Modeling from './pages/Modeling/Modeling';
 import Contact from './pages/Contact/Contact';
+import Birthday from './pages/Birthday/Birthday';
 
 /**
  * Styles
@@ -28,6 +29,7 @@ export default function App() {
       <Route path="/photography" component={Photography} />
       <Route path="/modeling" component={Modeling} />
       <Route path="/contact" component={Contact} />
+      <Route path="/birthday" component={Birthday} />
     </Switch>
   );
 }

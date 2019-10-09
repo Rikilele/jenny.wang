@@ -1,0 +1,45 @@
+p {
+  font-size: 1.6rem;
+
+}
+
+.container {
+  font-family: 'Noto Serif', serif;
+  margin: 10vh 12vw;
+  text-align: center;
+}
+
+.frontPage {
+  text-align: left;
+}
+
+.invisible {
+  display: none;
+}
+
+.button {
+  background: none;
+  border: none;
+  bottom: 6vh;
+  color: #aaaaaa;
+  cursor: pointer;
+  font-family: 'Noto Serif', serif;
+  font-size: 2rem;
+  padding: 50px;
+  position: fixed;
+  left: 0;
+  width: 100%;
+}
+
+.button:focus {
+  outline: 0;
+}
+
+/**
+ * For desktop
+ */
+@media only screen and (min-width: 768px) {
+  .container {
+    margin: 24vh 30vw;
+  }
+}
