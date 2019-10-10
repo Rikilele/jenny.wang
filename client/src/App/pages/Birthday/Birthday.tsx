@@ -123,6 +123,36 @@ export default class Birthday extends React.Component<{}, State> {
   }
 
   /**
+   * Preload image.
+   */
+  preloadImage(src: string) {
+    const img = new Image();
+    img.src = src;
+    img.onload = () => {
+      console.log(`Image preload complete: ${src}`);
+    }
+  }
+
+  /**
+   * To preload images.
+   */
+  componentDidMount() {
+    this.preloadImage(p0);
+    this.preloadImage(p1);
+    this.preloadImage(p2);
+    this.preloadImage(p3);
+    this.preloadImage(p4);
+    this.preloadImage(p5);
+    this.preloadImage(p6);
+    this.preloadImage(p7);
+    this.preloadImage(p8);
+    this.preloadImage(p9);
+    this.preloadImage(p10);
+    this.preloadImage(p11);
+    this.preloadImage(p12);
+  }
+
+  /**
    * Goes to the prev slide
    */
   handleBack(e: MouseEvent) {
@@ -197,7 +227,7 @@ export default class Birthday extends React.Component<{}, State> {
       currPage,
       displayButton,
     }: Partial<State> = this.state;
-    const buttonClass = displayButton ? 'animated fadeIn delay-1s' : styles.invisible;
+    const buttonClass = displayButton ? 'animated fadeIn' : styles.invisible;
     const isFirstPage = currPage === 0;
     const isLastPage = currPage === this.totalPages - 1;
     return (
