@@ -45,7 +45,7 @@ interface State {
  */
 export default class Birthday extends React.Component<{}, State> {
 
-  private totalPages = 19;
+  private totalPages = 22;
   private content = [
     {
       line1: '2019/10/10',
@@ -60,12 +60,24 @@ export default class Birthday extends React.Component<{}, State> {
       line2: 'here\'s an album of memories I compiled for you.',
     },
     {
-      line1: 'Could you have imagined one year ago today,',
-      line2: 'that we\'d share this many memories together?',
+      line1: 'There may be many ups and downs in our lives.',
+      line2: 'But I\'m ready to go through them together with you.',
     },
     {
-      line1: 'Probably not, but we\'re together now,',
-      line2: 'and are bound to share so many more intimate moments.',
+      line1: '"You are amazing',
+      line2: 'just as you are',
+    },
+    {
+      line1: 'You\'re a flower in the spring',
+      line2: 'You\'re the light each morning brings',
+    },
+    {
+      line1: 'And I adore you',
+      line2: 'just where you are',
+    },
+    {
+      line1: 'You\'re not the star that I wish on',
+      line2: 'You\'re the wish on my star."',
     },
   ];
   private photos = [ p0, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, ];
@@ -97,7 +109,7 @@ export default class Birthday extends React.Component<{}, State> {
     'What everyday life would be like.',
     'Date nights to fall in love again.',
     'Being silly and giggling together.',
-    'I love you so much.️',
+    'I love you.️',
   ];
 
   constructor(props: {}) {
@@ -106,14 +118,28 @@ export default class Birthday extends React.Component<{}, State> {
       currPage: 0,
       displayButton: true,
     };
-    this.handleClick = this.handleClick.bind(this);
+    this.handleBack = this.handleBack.bind(this);
+    this.handleNext = this.handleNext.bind(this);
+  }
+
+  /**
+   * Goes to the prev slide
+   */
+  handleBack(e: MouseEvent) {
+    e.preventDefault();
+    const { currPage }: Partial<State> = this.state;
+    this.setState({
+      currPage: (currPage - 1) % this.totalPages,
+      displayButton: false,
+    });
+    setTimeout(() => this.setState({ displayButton: true }), 3500);
   }
 
   /**
    * Goes to the next slide
    * Wraps around
    */
-  handleClick(e: MouseEvent) {
+  handleNext(e: MouseEvent) {
     e.preventDefault();
     const { currPage }: Partial<State> = this.state;
     this.setState({
@@ -140,7 +166,7 @@ export default class Birthday extends React.Component<{}, State> {
       || currPage === 9
       || currPage === 12
       || currPage === 13
-      || currPage === 18
+      || currPage === 20
     ) {
       landscape = true;
     }
@@ -155,7 +181,7 @@ export default class Birthday extends React.Component<{}, State> {
       const caption = this.captions[currPage - 4];
       const date = this.dates[currPage - 4];
       return <PhotoSlide photo={photo} date={date} caption={caption} landscape={landscape} />
-    } else if (currPage <= 17) {
+    } else if (currPage <= 20) {
       const content = this.content[currPage - 13];
       return <NormalSlide line1={content.line1} line2={content.line2} />
     } else {
@@ -172,14 +198,24 @@ export default class Birthday extends React.Component<{}, State> {
       displayButton,
     }: Partial<State> = this.state;
     const buttonClass = displayButton ? 'animated fadeIn delay-1s' : styles.invisible;
+    const isFirstPage = currPage === 0;
+    const isLastPage = currPage === this.totalPages - 1;
     return (
       <div className={styles.container}>
         <div>
           {this.renderContent()}
         </div>
+        {!(isFirstPage || isLastPage) &&
+          <button
+            className={`${buttonClass} ${styles.button}`}
+            onClick={this.handleBack}
+          >
+            {'<<'}
+          </button>
+        }
         <button
-          className={`${buttonClass} ${styles.button}`}
-          onClick={this.handleClick}
+          className={`${buttonClass} ${styles.button2} ${isFirstPage || isLastPage ? styles.fullButton : ''}`}
+          onClick={this.handleNext}
         >
           {currPage === this.totalPages - 1 ? 'Replay' : '>>'}
         </button>

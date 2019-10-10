@@ -25,11 +25,35 @@
   position: fixed;
   left: 0;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  width: 100%;
+  width: 50%;
 }
 
 .button:focus {
   outline: 0;
+}
+
+.button2 {
+  background: none;
+  border: none;
+  bottom: 3vh;
+  color: #aaaaaa;
+  cursor: pointer;
+  font-family: 'Noto Serif', serif;
+  font-size: 2rem;
+  padding: 50px;
+  position: fixed;
+  left: 50%;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  width: 50%;
+}
+
+.button2:focus {
+  outline: 0;
+}
+
+.fullButton {
+  width: 100%;
+  left: 0;
 }
 
 /**
