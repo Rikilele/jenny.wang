@@ -11,7 +11,7 @@ import CarouselPage from '../CarouselPage/CarouselPage';
 export default function Modeling() {
   return (
     <CarouselPage
-      apiEndpoint="/api/getModelImages"
+      apiEndpoint="/api/modeling"
       publicRoute="/modeling"
     />
   );

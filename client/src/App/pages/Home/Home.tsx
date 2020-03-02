@@ -26,7 +26,6 @@ import './Home.css';
 export default function Home() {
   return (
     <AppContainer>
-      <Padding />
       <h1 className="home-title">
         Jenny Wang
       </h1>
@@ -41,7 +40,7 @@ export default function Home() {
       <Circle
         imageSrc={archieImg}
         title="Projects"
-        description="Coming Soon"
+        description="Crafted by Jenny"
         link="/projects"
       />
       <Circle

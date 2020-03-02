@@ -3,8 +3,8 @@
   position: relative;
   border-radius: 50%;
   margin: 0;
-  width: 15vw;
-  height: 15vw;
+  width: 14vw;
+  height: 14vw;
   opacity: 0.6;
 }
 
@@ -17,10 +17,9 @@
   display: inline-block;
   position: relative;
   border-radius: 50%;
-  margin-left: 2vw;
-  margin-right: 2vw;
-  width: 15vw;
-  height: 15vw;
+  margin: 0.5vw;
+  width: 14vw;
+  height: 14vw;
   background: radial-gradient(circle at 20% 30%, #ffffff, #000000);
   transition: transform .2s;
 }
@@ -39,14 +38,14 @@
 }
 
 .title {
-  font-family: 'Open Sans', sans-serif;
-  font-size: calc(12px + 2vmin);
+  font-family: 'La Belle Aurore', cursive;
+  font-size: calc(16px + 2vmin);
   color: #ffffff;
 }
 
 .description {
   font-family: 'Open Sans', sans-serif;
-  font-size: calc(1vmin);
+  font-size: calc(1.2vmin);
   color: #ffffff;
 }
 
@@ -82,8 +81,8 @@
 }
 
 .m_title {
-  font-family: 'Open Sans', sans-serif;
-  font-size: 24px;
+  font-family: 'La Belle Aurore', cursive;
+  font-size: 28px;
   color: #ffffff;
 }
 

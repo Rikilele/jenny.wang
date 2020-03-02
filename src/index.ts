@@ -16,6 +16,12 @@ import dotenv from 'dotenv';
 import nodemailer, { Transporter, SendMailOptions } from 'nodemailer';
 
 /**
+ * Settings JSON files
+ */
+import projectsSettings from '../public/projects/settings.json';
+import photographySettings from '../public/photography/settings.json';
+
+/**
  * Settings
  */
 dotenv.config();
@@ -41,28 +47,64 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 /**
- * API endpoint to return list of projects
+ * API endpoint to return a list of photography albums
  */
-app.get('/api/getProjectList', (req: Request, res: Response) => {
-  res.sendFile(path.join(__dirname, '../public/projects/settings.json'));
-});
-
-/**
- * API endpoint to return list of sources to model images
- */
-app.get('/api/getModelImages', (req: Request, res: Response) => {
-  const pathToDir: string = path.join(__dirname, '../public/modeling');
-  fs.readdir(pathToDir, (err, items: string[]) => {
-    const result: string[] = items.filter((item: string) => isImage(item));
-    res.json(result);
-  });
+app.get('/api/photography', (req: Request, res: Response) => {
+  res.json(photographySettings);
 });
 
 /**
  * API endpoint to return list of sources to photography images
  */
-app.get('/api/getPhotographyImages', (req: Request, res: Response) => {
-  const pathToDir: string = path.join(__dirname, '../public/photography');
+app.get('/api/photography/:album', (req: Request, res: Response) => {
+  const { album } = req.params;
+  if (!photographySettings.find(setting => setting.id === album)) {
+    res.sendStatus(404);
+  } else {
+    const pathToDir: string = path.join(__dirname, `../public/photography/${album}`);
+    fs.readdir(pathToDir, (err, items: string[]) => {
+      if (err) {
+        res.sendStatus(500);
+      } else {
+        const result: string[] = items.filter((item: string) => isImage(item));
+        res.json(result);
+      }
+    });
+  }
+});
+
+/**
+ * API endpoint to return list of projects
+ */
+app.get('/api/projects', (req: Request, res: Response) => {
+  res.json(projectsSettings);
+});
+
+/**
+ * API endpoint to return list of projects
+ */
+app.get('/api/projects/:project', (req: Request, res: Response) => {
+  const { project } = req.params;
+  if (!projectsSettings.find(setting => setting.id === project)) {
+    res.sendStatus(404);
+  } else {
+    const pathToDir: string = path.join(__dirname, `../public/projects/${project}`);
+    fs.readdir(pathToDir, (err, items: string[]) => {
+      if (err) {
+        res.sendStatus(500);
+      } else {
+        const result: string[] = items.filter((item: string) => isImage(item));
+        res.json(result);
+      }
+    });
+  }
+});
+
+/**
+ * API endpoint to return list of sources to model images
+ */
+app.get('/api/modeling', (req: Request, res: Response) => {
+  const pathToDir: string = path.join(__dirname, '../public/modeling');
   fs.readdir(pathToDir, (err, items: string[]) => {
     const result: string[] = items.filter((item: string) => isImage(item));
     res.json(result);

@@ -46,7 +46,7 @@ export default class Projects extends React.Component<{}, State> {
 
   // Retrieves projects from API endpoint
   getProjects() {
-    fetch('/api/getProjectList')
+    fetch('/api/projects')
       .then((res) => res.json())
       .then((projects: Project[]) => this.setState({ projects }));
   }
@@ -59,12 +59,13 @@ export default class Projects extends React.Component<{}, State> {
         {projects.map((project: Project) => (
           <Circle
             key={project.id}
-            imageSrc={`/projects/${project.id}/${project.id}.jpg`}
+            imageSrc={`/projects/${project.id}.jpg`}
             title={project.title}
             description={project.description}
             link={`/projects/details/${project.id}`}
           />
         ))}
+        <Padding />
       </AppContainer>
     );
   }
