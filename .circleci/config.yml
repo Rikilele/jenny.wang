@@ -25,8 +25,10 @@ jobs:
             npm -v
             yarn -v
       - run:
-           name: pwd
-           command: pwd
+          name: pwd
+          command: |
+            pwd
+            ls
 
       - run:
           name: Setup
