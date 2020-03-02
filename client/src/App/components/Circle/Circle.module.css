@@ -38,14 +38,14 @@
 }
 
 .title {
-  font-family: 'La Belle Aurore', cursive;
-  font-size: calc(16px + 2vmin);
+  font-family: 'Poiret One', '';
+  font-size: calc(14px + 2vmin);
   color: #ffffff;
 }
 
 .description {
-  font-family: 'Open Sans', sans-serif;
-  font-size: calc(1.2vmin);
+  font-family: 'Open Sans', '';
+  font-size: calc(1.4vmin);
   color: #ffffff;
 }
 
@@ -81,13 +81,13 @@
 }
 
 .m_title {
-  font-family: 'La Belle Aurore', cursive;
+  font-family: 'Poiret One', '';
   font-size: 28px;
   color: #ffffff;
 }
 
 .m_description {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Open Sans', '';
   font-size: 12px;
   color: #ffffff;
 }

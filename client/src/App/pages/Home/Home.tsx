@@ -30,7 +30,7 @@ export default function Home() {
         Jenny Wang
       </h1>
       <p className="home-description">
-        Jenny Wang is a rising sophomore at Carnegie Mellon University.
+        Jenny Wang is currently a sophomore at Carnegie Mellon University.
         <br />
         She studies Architecture with an interest in interior design.
       </p>

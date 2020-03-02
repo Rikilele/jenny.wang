@@ -1,4 +1,5 @@
 .contact-input {
+  font-family: 'Open Sans', '';
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -16,6 +17,7 @@
 }
 
 .contact-button {
+  font-family: 'Open Sans', '';
   margin-top: 1em;
   width: 30%;
   padding: .375rem .75rem;
@@ -42,11 +44,13 @@
  * Custom toast styles
  */
 .contact-toast-success {
+  font-family: 'Open Sans', '';
   background: #bbddff;
   color: #222222;
 }
 
 .contact-toast-error {
+  font-family: 'Open Sans', '';
   background: #ffdddd;
   color: #222222;
 }
