@@ -22,6 +22,7 @@ export default function PhotoAlbum(props: Props) {
   const { match }: Partial<Props> = props;
   return (
     <CarouselPage
+      isHorizontal
       apiEndpoint={`/api/photography/${match.params.id}`}
       publicRoute={`/photography/${match.params.id}`}
     />

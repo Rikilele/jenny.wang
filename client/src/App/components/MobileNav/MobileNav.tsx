@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
  * Assets
  */
 import menu from './menu.png';
+import x from './x.png';
 
 /**
  * Styles
@@ -60,7 +61,7 @@ class MobileNav extends React.Component<Props, State> {
           >
             <img
               className={styles.icon}
-              src={menu}
+              src={isOpen ? x : menu}
               alt="menu"
             />
           </button>

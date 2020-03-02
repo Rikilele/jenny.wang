@@ -22,6 +22,7 @@ export default function Project(props: Props) {
   const { match }: Partial<Props> = props;
   return (
     <CarouselPage
+      isHorizontal
       apiEndpoint={`/api/projects/${match.params.id}`}
       publicRoute={`/projects/${match.params.id}`}
     />

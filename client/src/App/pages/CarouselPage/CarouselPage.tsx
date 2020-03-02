@@ -25,6 +25,7 @@ import routes from '../routes.json';
  * Types
  */
 interface Props {
+  isHorizontal?: boolean;
   apiEndpoint: string;
   publicRoute: string;
 }
@@ -57,11 +58,20 @@ export default class CarouselPage extends React.Component<Props, State> {
   }
 
   render() {
-    const { publicRoute }: Partial<Props> = this.props;
+    const {
+      publicRoute,
+      isHorizontal,
+    }: Partial<Props> = this.props;
     const { imageSources }: Partial<State> = this.state;
+    let imgClassAddition = '';
+    if (isMobile && isHorizontal) {
+      imgClassAddition = 'carousel-horizontal'
+    }
+
     return (
       <div>
         <Navbar tabs={routes} />
+        {!isMobile && <br />}
         <Carousel
           showThumbs={!isMobile}
           showStatus={false}
@@ -77,7 +87,7 @@ export default class CarouselPage extends React.Component<Props, State> {
               className={isMobile ? 'm-carousel-page-height' : 'carousel-page-height'}
             >
               <img
-                className="carousel-page-image"
+                className={`carousel-page-image ${imgClassAddition}`}
                 src={`${publicRoute}/${imgSrc}`}
                 alt={imgSrc}
               />
