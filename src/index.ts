@@ -18,8 +18,8 @@ import nodemailer, { Transporter, SendMailOptions } from 'nodemailer';
 /**
  * Settings JSON files
  */
-import projectsSettings from '../public/projects/settings.json';
-import photographySettings from '../public/photography/settings.json';
+import projectsSettings from './projectsSettings.json';
+import photographySettings from './photographySettings.json';
 
 /**
  * Settings

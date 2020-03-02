@@ -2,11 +2,11 @@
   "name": "jenny.wang",
   "version": "1.0.0",
   "description": "Portfolio for Jenny Wang built with Express, React, and React-Router",
-  "main": "dist/src/index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "start": "node dist/src/index.js",
+    "start": "node dist/index.js",
     "dev": "ts-node-dev --respawn --transpileOnly src/index.ts",
-    "setup": "yarn && tsc && node dist/src/setup.js && cd client && yarn",
+    "setup": "yarn && tsc && node dist/setup.js && cd client && yarn",
     "build": "tsc && cd client && yarn install --production=false && yarn build",
     "lint": "eslint src/*",
     "tsc": "tsc"
