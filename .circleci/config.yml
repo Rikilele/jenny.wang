@@ -6,7 +6,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/node:10.15.0
+      - image: circleci/node:12.13.0
 
     working_directory: ~/repo
 
@@ -16,7 +16,7 @@ jobs:
       - run:
           name: Install yarn
           command:
-            sudo npm install -g yarn@1.17.3
+            sudo npm install -g yarn@1.21.1
 
       - run:
           name: Check version
