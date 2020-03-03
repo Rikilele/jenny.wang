@@ -33,7 +33,9 @@ export default class NormalSlide extends React.Component<Props, State> {
   }
 
   componentDidUpdate(prevProps: Props) {
+    // eslint-disable-next-line react/destructuring-assignment
     if (prevProps.line1 !== this.props.line1) {
+      // eslint-disable-next-line react/no-did-update-set-state
       this.setState({ className: styles.invisible });
       setTimeout(() => this.setState({ className: 'fadeInDown slow' }), 500);
     }

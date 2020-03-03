@@ -35,7 +35,9 @@ export default class PhotoSlide extends React.Component<Props, State> {
   }
 
   componentDidUpdate(prevProps: Props) {
+    // eslint-disable-next-line react/destructuring-assignment
     if (prevProps.caption !== this.props.caption) {
+      // eslint-disable-next-line react/no-did-update-set-state
       this.setState({ className: styles.invisible });
       setTimeout(() => this.setState({ className: 'fadeIn' }), 500);
     }

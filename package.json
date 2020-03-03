@@ -8,7 +8,7 @@
     "dev": "ts-node-dev --respawn --transpileOnly src/index.ts",
     "setup": "yarn && tsc && node dist/setup.js && cd client && yarn",
     "build": "tsc && cd client && yarn install --production=false && yarn build",
-    "lint": "eslint src/*",
+    "lint": "eslint src/**/*.ts",
     "tsc": "tsc"
   },
   "repository": {

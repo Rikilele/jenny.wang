@@ -44,8 +44,8 @@ interface State {
  * Special Birthday Page <3
  */
 export default class Birthday extends React.Component<{}, State> {
-
   private totalPages = 22;
+
   private content = [
     {
       line1: '2019/10/10',
@@ -80,7 +80,9 @@ export default class Birthday extends React.Component<{}, State> {
       line2: 'You\'re the wish on my star."',
     },
   ];
-  private photos = [ p0, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, ];
+
+  private photos = [p0, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12];
+
   private dates = [
     'March 23rd',
     'April 27th',
@@ -96,6 +98,7 @@ export default class Birthday extends React.Component<{}, State> {
     'September 23rd',
     'Happy birthday baby.',
   ];
+
   private captions = [
     'The first day we met.',
     'Intimate nights in Donner.',
@@ -123,17 +126,6 @@ export default class Birthday extends React.Component<{}, State> {
   }
 
   /**
-   * Preload image.
-   */
-  preloadImage(src: string) {
-    const img = new Image();
-    img.src = src;
-    img.onload = () => {
-      console.log(`Image preload complete: ${src}`);
-    }
-  }
-
-  /**
    * To preload images.
    */
   componentDidMount() {
@@ -150,6 +142,18 @@ export default class Birthday extends React.Component<{}, State> {
     this.preloadImage(p10);
     this.preloadImage(p11);
     this.preloadImage(p12);
+  }
+
+  /**
+   * Preload image.
+   */
+  // eslint-disable-next-line class-methods-use-this
+  preloadImage(src: string) {
+    const img = new Image();
+    img.src = src;
+    img.onload = () => {
+      console.log(`Image preload complete: ${src}`); // eslint-disable-line no-console
+    };
   }
 
   /**
@@ -179,6 +183,7 @@ export default class Birthday extends React.Component<{}, State> {
     setTimeout(() => this.setState({ displayButton: true }), 3500);
   }
 
+  // eslint-disable-next-line class-methods-use-this
   renderFrontPage() {
     return (
       <div className={styles.frontPage}>
@@ -188,7 +193,7 @@ export default class Birthday extends React.Component<{}, State> {
   }
 
   renderContent() {
-    const currPage = this.state.currPage;
+    const { currPage } = this.state;
     let landscape = false;
     if (
       currPage === 5
@@ -203,23 +208,22 @@ export default class Birthday extends React.Component<{}, State> {
 
     if (currPage === 0) {
       return this.renderFrontPage();
-    } else if (currPage <= 3) {
+    } if (currPage <= 3) {
       const content = this.content[currPage - 1];
-      return <NormalSlide line1={content.line1} line2={content.line2} />
-    } else if (currPage <= 15) {
+      return <NormalSlide line1={content.line1} line2={content.line2} />;
+    } if (currPage <= 15) {
       const photo = this.photos[currPage - 4];
       const caption = this.captions[currPage - 4];
       const date = this.dates[currPage - 4];
-      return <PhotoSlide photo={photo} date={date} caption={caption} landscape={landscape} />
-    } else if (currPage <= 20) {
+      return <PhotoSlide photo={photo} date={date} caption={caption} landscape={landscape} />;
+    } if (currPage <= 20) {
       const content = this.content[currPage - 13];
-      return <NormalSlide line1={content.line1} line2={content.line2} />
-    } else {
-      const photo = this.photos[this.photos.length - 1];
-      const caption = this.captions[this.captions.length - 1];
-      const date = this.dates[this.dates.length - 1];
-      return <PhotoSlide photo={photo} date={date} caption={caption} landscape={landscape}  />
+      return <NormalSlide line1={content.line1} line2={content.line2} />;
     }
+    const photo = this.photos[this.photos.length - 1];
+    const caption = this.captions[this.captions.length - 1];
+    const date = this.dates[this.dates.length - 1];
+    return <PhotoSlide photo={photo} date={date} caption={caption} landscape={landscape} />;
   }
 
   render() {
@@ -235,15 +239,18 @@ export default class Birthday extends React.Component<{}, State> {
         <div>
           {this.renderContent()}
         </div>
-        {!(isFirstPage || isLastPage) &&
+        {!(isFirstPage || isLastPage)
+          && (
           <button
+            type="button"
             className={`${buttonClass} ${styles.button}`}
             onClick={this.handleBack}
           >
             {'<<'}
           </button>
-        }
+          )}
         <button
+          type="button"
           className={`${buttonClass} ${styles.button2} ${isFirstPage || isLastPage ? styles.fullButton : ''}`}
           onClick={this.handleNext}
         >

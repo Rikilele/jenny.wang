@@ -20,7 +20,6 @@ interface State {
  * Switches name in Dear ___ every second.
  */
 export default class Dear extends React.Component<{}, State> {
-
   /**
    * Different names I call her <3
    */
@@ -46,7 +45,7 @@ export default class Dear extends React.Component<{}, State> {
     };
     this.changeName = this.changeName.bind(this);
   }
-  
+
   componentDidMount() {
     this.interval = setInterval(this.changeName, 1200);
   }
@@ -77,7 +76,9 @@ export default class Dear extends React.Component<{}, State> {
     const className = fadeIn ? 'animated fadeIn' : 'animated fadeOut';
     return (
       <h1 className={styles.dear}>
-        Dear <span className={className}>{`${this.NAMES[currIndex]},`}</span>
+        Dear
+        {' '}
+        <span className={className}>{`${this.NAMES[currIndex]},`}</span>
       </h1>
     );
   }

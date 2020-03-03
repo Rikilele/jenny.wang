@@ -65,7 +65,7 @@ export default class CarouselPage extends React.Component<Props, State> {
     const { imageSources }: Partial<State> = this.state;
     let imgClassAddition = '';
     if (isMobile && isHorizontal) {
-      imgClassAddition = 'carousel-horizontal'
+      imgClassAddition = 'carousel-horizontal';
     }
 
     return (
