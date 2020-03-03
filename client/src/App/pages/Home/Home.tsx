@@ -30,9 +30,14 @@ export default function Home() {
         Jenny Wang
       </h1>
       <p className="home-description">
-        Jenny Wang is currently a sophomore at Carnegie Mellon University.
+        Shanghai · Vancouver · Pittsburgh
         <br />
-        She studies Architecture with an interest in interior design.
+        <br />
+        Jenny is in pursuit of her passion for art, photography, and design.
+        <br />
+        She is currently an architecture student studying at Carnegie Mellon University.
+        <br />
+        On this website, you&apos;ll discover some of her most recent work.
       </p>
       <p className="home-description">
         <Link to="/contact" className="home-link">Contact</Link>
