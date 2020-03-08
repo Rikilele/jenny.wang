@@ -21,10 +21,10 @@ A portfolio website built for Jenny Wang using Express, React, and React-Router.
 ## Installation
 
 ```sh
-# Confirm node version >= 10.15.0
+# Confirm node version >= 12.13.0
 $ node -v
 
-# Confirm yarn version >= 1.17.3
+# Confirm yarn version >= 1.21.1
 $ yarn -v
 
 # Clone the repository
